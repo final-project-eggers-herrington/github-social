@@ -11,6 +11,9 @@ import { LoginController }    from './controllers/login.controller';
 import { ProfileController }  from './controllers/profile.controller';
 import { RegisterController } from './controllers/register.controller';
 
+// Import services
+import { LoginService } from './services/login.service';
+
 angular
 	.module('app', ['ui.router', 'ngCookies'])
 	.config(config)
@@ -19,4 +22,5 @@ angular
 	.controller('LayoutController',   LayoutController)
 	.controller('LoginController',    LoginController)
 	.controller('ProfileController',  ProfileController)
-	.controller('RegisterController', RegisterController);
+	.controller('RegisterController', RegisterController)
+	.service('LoginService', LoginService)
