@@ -1,5 +1,5 @@
 let SERVER = {
-	URL: "localhost:3333"
+	URL: "https://cryptic-lowlands-40707.herokuapp.com/"
 }
 
 export { SERVER }
