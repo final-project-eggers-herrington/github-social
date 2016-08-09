@@ -1,4 +1,4 @@
-function ProfileService ($http, GITHUB) {
+function ProfileService ($http, GITHUB, $cookies, $state) {
 	this.getProfile = getProfile;
 
 	function getProfile (username) {
@@ -7,5 +7,5 @@ function ProfileService ($http, GITHUB) {
 	}
 }
 
-ProfileService.$inject = ['$http', 'GITHUB'];
+ProfileService.$inject = ['$http', 'GITHUB', '$cookies', '$state'];
 export { ProfileService };
