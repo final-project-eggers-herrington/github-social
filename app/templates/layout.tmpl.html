@@ -4,8 +4,8 @@
 			<a href="/#/">Home</a>
 			<a href="/#/login">Login</a>
 			<a href="/#/register">Register</a>
-			<span class="profile-link" ng-click="vm.viewProfile()">Profile</a>
-			<form name="github-search"><input type="text" name="searchbar"></form>
+			<span class="profile-link" ng-click="vm.viewProfile()">Profile</a></span>
+			<form name="github-search" ng-submit="vm.search(search)"><input type="text" name="searchbar" ng-model="search.q"></form>
 		</div>
 	</div>
 </div>
