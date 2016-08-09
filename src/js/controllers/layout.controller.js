@@ -1,6 +1,12 @@
-function LayoutController () {
+function LayoutController (LayoutService) {
+	let vm = this;
+	vm.viewProfile = viewProfile;
+	
+	function viewProfile () {
+		LayoutService.viewProfile();
+	}
 
 }
 
-LayoutController.$inject = [];
+LayoutController.$inject = ['LayoutService'];
 export { LayoutController };

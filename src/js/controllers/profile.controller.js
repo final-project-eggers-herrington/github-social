@@ -2,7 +2,7 @@ import $ from "jquery"
 
 function ProfileController (ProfileService, $stateParams) {
 	let vm = this
-
+	
 	function init () {
 		ProfileService.getProfile($stateParams.username).then(function (res){
 			console.log(res);
@@ -11,7 +11,6 @@ function ProfileController (ProfileService, $stateParams) {
 	}
 
 	init();
-
 }
 
 ProfileController.$inject = ['ProfileService', '$stateParams'];

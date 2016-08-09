@@ -1,7 +1,7 @@
 function LoginController (LoginService, $state) {
 
 	let vm = this;
-	this.login = login;
+	vm.login = login;
 
 	function login (user) {
 		LoginService.login(user)

@@ -16,6 +16,7 @@ import { RegisterController } from './controllers/register.controller';
 import { LoginService } from './services/login.service';
 import { RegistrationService } from './services/registration.service'
 import { ProfileService } from './services/profile.service'
+import { LayoutService } from './services/layout.service'
 
 angular
 	.module('app', ['ui.router', 'ngCookies'])
@@ -30,4 +31,5 @@ angular
 	.service('LoginService', LoginService)
 	.service('RegistrationService', RegistrationService)
 	.service('ProfileService', ProfileService)
+	.service('LayoutService', LayoutService)
 ;
