@@ -1,0 +1,12 @@
+<div>
+	<span>Sign Up</span>
+</div>
+<form ng-submit="vm.register(user)">
+	<label>Email</label>
+	<input type="text" name="email" ng-model="user.email">
+	<label>Password</label>
+	<input type="password" name="password" ng-model="user.password">
+	<label>Github Username</label>
+	<input type="text" name="gh-username" ng-model="user.github">
+	<button>Sign Up</button>
+</form>
