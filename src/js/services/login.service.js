@@ -1,14 +1,9 @@
-function LoginService ($http, SERVER, $cookies, $state) {
+function LoginService ($http, SERVER) {
 	this.login = login
 	function login (user) {
-		$http.post(SERVER.URL + 'login', user).then( res => {
-			$cookies.put('access_token', res.data.access_token);
-			$cookies.put('github_account', res.data.github);
-			console.log("login service ran! : ", res)
-			$state.go('root.profile', {username: res.data.github})
-		});
+		return $http.post(SERVER.URL + 'login', user)
 	}
 }
 
-LoginService.$inject = ['$http', 'SERVER', '$cookies', '$state'];
+LoginService.$inject = ['$http', 'SERVER'];
 export { LoginService };

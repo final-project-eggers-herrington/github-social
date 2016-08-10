@@ -9,12 +9,9 @@ function LayoutService ($cookies, $state, $http, GITHUB) {
 
 	function search (search) {
 		console.log(search)
-		return $http.get(GITHUB.URL + `search/repositories?q=${search.q}/`).then(function (res) {
-			console.log(res)
-		})
+		$state.go('root.search', {searchquery: search.q});
+		}
 	}
-
-}
 
 LayoutService.$inject = ['$cookies', '$state', '$http', 'GITHUB'];
 export { LayoutService };
