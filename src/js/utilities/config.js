@@ -10,6 +10,11 @@ function config ($stateProvider, $urlRouterProvider) {
 			templateUrl: 'templates/home.tmpl.html',
 			controller: 'HomeController as vm'
 		})
+		.state('root.repo-single', {
+			url: '/repos/:repoid',
+			templateUrl: 'templates/repos.tmpl.html',
+			controller: 'RepoController as vm'
+		})
 		.state('root.login', {
 			url: '/login',
 			templateUrl: 'templates/login.tmpl.html',
@@ -24,6 +29,11 @@ function config ($stateProvider, $urlRouterProvider) {
 			url: '/:username',
 			templateUrl: 'templates/profile.tmpl.html',
 			controller: 'ProfileController as vm'
+		})
+		.state('root.search', {
+			url: '/search',
+			templateUrl: 'templates/searchpage.tmpl.html',
+			controller: 'SearchPageController as vm'
 		})
 
 	$urlRouterProvider.otherwise('/');
