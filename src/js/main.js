@@ -33,5 +33,5 @@ angular
 	.service('RegistrationService', RegistrationService)
 	.service('ProfileService', ProfileService)
 	.service('LayoutService', LayoutService)
-	.service('HomeService', LayoutService)
+	.service('HomeService', HomeService)
 ;
