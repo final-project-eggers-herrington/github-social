@@ -12,7 +12,7 @@ function config ($stateProvider, $urlRouterProvider) {
 		})
 		.state('root.repo-single', {
 			url: '/repos/:repoid',
-			templateUrl: 'templates/repos.tmpl.html',
+			templateUrl: 'templates/repo.tmpl.html',
 			controller: 'RepoController as vm'
 		})
 		.state('root.login', {
@@ -26,12 +26,12 @@ function config ($stateProvider, $urlRouterProvider) {
 			controller: 'RegisterController as vm'
 		})
 		.state('root.profile', {
-			url: '/:username',
+			url: '/users/:username',
 			templateUrl: 'templates/profile.tmpl.html',
 			controller: 'ProfileController as vm'
 		})
 		.state('root.search', {
-			url: '/search',
+			url: '/search/:searchquery',
 			templateUrl: 'templates/searchpage.tmpl.html',
 			controller: 'SearchPageController as vm'
 		})
