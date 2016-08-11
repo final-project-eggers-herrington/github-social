@@ -10,4 +10,28 @@
 		</div>
 		<span class="hireable">Hireable: Yes</span>
 	</div>
+	<div ng-hide="vm.results" class="user-repos">
+		<div class="single-user-repo" ng-repeat="repo in vm.userRepos">
+			<div>
+				<span>{{repo.name}}</span>
+				<span>{{repo.created_at}}</span>
+				<span>{{repo.language}}</span>
+				<a href="{{repo.html_url}}">View Repository</a>
+			</div>
+		</div>
+	</div>
+	<div ng-show="vm.results" class="results">
+		<div class="single-user-repo" ng-repeat="filteredRepo in vm.filteredUserRepos">
+			<div>
+				<span>{{filteredRepo.name}}</span>
+				<span>{{filteredRepo.created_at}}</span>
+				<span>{{filteredRepo.language}}</span>
+				<a href="{{filteredRepo.html_url}}">View Repository</a>
+			</div>
+		</div>
+	</div>
+	<form ng-submit="vm.foo(repoSearch.repository)">
+		<input type="text" name="user-search" ng-model="repoSearch.repository">
+		<button>Search {{vm.userData.login}}'s Repositories</button>
+	</form>
 </div>

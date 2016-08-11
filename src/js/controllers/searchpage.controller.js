@@ -3,7 +3,8 @@ import $ from 'jquery';
 function SearchPageController ($stateParams, SearchPageService, $cookies) {
 	let vm = this;
 	vm.toggleClass = toggleClass;
-	vm.postSubmit = postSubmit;
+	vm.postSubmit  = postSubmit;
+	vm.searchItems = {};
 
 	let searchTerm = $stateParams.searchquery;
 
