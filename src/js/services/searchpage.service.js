@@ -8,7 +8,15 @@ function SearchPageService ($http, GITHUB, SERVER, $cookies) {
 	}
 
 	function postItem (obj) {
-		return $http.post(SERVER.URL + "post", obj);
+		let token = $cookies.get('access_token')
+		return $http({
+			method: 'POST',
+			url: SERVER.URL + 'post',
+			headers: {'Authorization': `Bearer ${token}`},
+			data: obj
+		});
+		// postItem(obj)
+		// uncomment above line and remove the return
 	}
 }
 
