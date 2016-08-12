@@ -8,8 +8,6 @@ function SearchPageController ($stateParams, SearchPageService, $cookies) {
 
 	let searchTerm = $stateParams.searchquery;
 
-	// function search(term) 
-
 	SearchPageService.secondSearch(searchTerm).then(function(res) {
 		vm.searchItems = res.data.items;
 		console.log(vm.searchItems);
@@ -28,9 +26,10 @@ function SearchPageController ($stateParams, SearchPageService, $cookies) {
 		obj.original_creator = search.owner.login;
 		obj.creation_date    = search.created_at;
 
-		SearchPageService.postItem(obj);
+		SearchPageService.postItem(obj).then( res => {
+			console.log(res)
+		});
 	}
-
 }
 
 SearchPageController.$inject = ['$stateParams', 'SearchPageService', '$cookies'];
