@@ -2,7 +2,8 @@
 	<div class="nav">
 		<div class="links">
 			<a href="/#/">Home</a>
-			<a href="/#/login">Login</a>
+			<a href="/#/login" ng-hide="vm.isLoggedIn">Login</a>
+			<span ng-show="vm.isLoggedIn" ng-click="vm.logOut()">Logout</span>
 			<span class="profile-link" ng-click="vm.viewProfile()">Profile</span>
 			<form name="github-search" ng-submit="vm.search(search)"><input type="text" name="searchbar" ng-model="search.q"></form>
 		</div>
