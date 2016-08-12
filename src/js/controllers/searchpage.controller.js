@@ -27,7 +27,6 @@ function SearchPageController ($stateParams, SearchPageService, $cookies) {
 		obj.language         = search.language;
 		obj.original_creator = search.owner.login;
 		obj.creation_date    = search.created_at;
-		obj.poster           = $cookies.get('github_account') ? $cookies.get('github_account') : null ;
 
 		SearchPageService.postItem(obj);
 	}

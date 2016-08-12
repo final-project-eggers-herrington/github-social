@@ -8,12 +8,7 @@ function SearchPageService ($http, GITHUB, SERVER, $cookies) {
 	}
 
 	function postItem (obj) {
-		if (!obj.poster){
-			alert("Log in dude!")
-		} else {
-			console.log("submitted")
-			return $http.post(SERVER.URL + "post", obj);
-		}
+		return $http.post(SERVER.URL + "post", obj);
 	}
 }
 
