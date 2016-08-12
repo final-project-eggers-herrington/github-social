@@ -1,19 +1,14 @@
 function SearchPageService ($http, GITHUB, SERVER, $cookies) {
 	
 	this.secondSearch = secondSearch;
-	this.postItem = postItem;
+	this.postItem     = postItem;
 
 	function secondSearch (searchquery) {
 		return $http.get(GITHUB.URL + `search/repositories?q=${searchquery}/`)
 	}
 
 	function postItem (obj) {
-		if (!obj.poster){
-			alert("Log in dude!")
-		} else {
-			console.log("submitted")
-			return $http.post(SERVER.URL + "post", obj);
-		}
+		return $http.post(SERVER.URL + "post", obj);
 	}
 }
 
