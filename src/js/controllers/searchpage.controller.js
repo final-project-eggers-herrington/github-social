@@ -20,11 +20,14 @@ function SearchPageController ($stateParams, SearchPageService, $cookies) {
 	function postSubmit (search) {
 		let obj = {}
 
-		obj.description      = search.description;
-		obj.name             = search.name;
-		obj.language         = search.language;
-		obj.original_creator = search.owner.login;
-		obj.creation_date    = search.created_at;
+		obj.description   = search.description;
+		obj.name          = search.name;
+		obj.language      = search.language;
+		obj.oc_login      = search.owner.login;
+		obj.oc_url        = search.owner.html_url;
+		obj.creation_date = search.created_at;
+
+		console.log(obj)
 
 		SearchPageService.postItem(obj).then( res => {
 			console.log(res)
