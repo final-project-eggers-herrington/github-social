@@ -21,11 +21,12 @@ function SearchPageController ($stateParams, SearchPageService, $cookies) {
 		let obj = {}
 
 		obj.description   = search.description;
-		obj.name          = search.name;
+		obj.title         = search.name;
 		obj.language      = search.language;
 		obj.oc_login      = search.owner.login;
 		obj.oc_url        = search.owner.html_url;
-		obj.creation_date = search.created_at;
+		obj.repo_url      = search.html_url;
+		obj.create_date = search.created_at;
 
 		console.log(obj)
 

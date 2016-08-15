@@ -1,0 +1,11 @@
+<div class="single-repo">
+	{{ vm.repoData.github }}
+	<a href="{{vm.repoData.oc_url}}">{{ vm.repoData.oc_login }}</a>
+	{{ vm.repoData.title }}
+	{{ vm.repoData.description }}
+	{{ vm.repoData.language }}
+
+	<div class="comment-block" ng-repeat="comment in comments">
+		
+	</div>
+</div>
