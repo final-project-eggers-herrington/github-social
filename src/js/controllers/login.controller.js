@@ -8,6 +8,8 @@ function LoginController (LoginService, $state, $cookies) {
 			$cookies.put('access_token', res.data.access_token);
 			$cookies.put('github_account', res.data.github);
 			$state.go('root.profile', {username: res.data.github});
+		}, (error) => {
+			console.log(error);
 		});
 	}
 

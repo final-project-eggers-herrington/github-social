@@ -1,4 +1,4 @@
-function RepoController (RepoService, $stateParams) {
+function RepoController (RepoService, $stateParams, $cookies) {
 	let vm = this;
 	vm.reply = reply;
 	vm.showreplyform = false;
@@ -15,12 +15,28 @@ function RepoController (RepoService, $stateParams) {
 		vm.showreplyform = true;
 	}
 
-	function commentSubmit (comment) {
-		RepoService.commentSubmit(comment).then(res=>{
-			console.log(res)
+	function viewAllComments () {
+		RepoService.viewAllComments().then(res=>{
+			vm.comments = res.data;
+			console.log('viewAllComments:', res)
 		})
+	}
+
+	viewAllComments();
+
+	function commentSubmit (comment) {
+		let obj = {};
+		obj.content = comment.content;
+		obj.user_github = $cookies.get('github_account');
+		obj.repo_id = $stateParams.repoid;
+
+		RepoService.commentSubmit(obj).then(res=>{
+			console.log('commentSubmit:', res)
+		})
+
+		viewAllComments();
 	}
 }
 
-RepoController.$inject = ['RepoService', '$stateParams'];
+RepoController.$inject = ['RepoService', '$stateParams', '$cookies'];
 export { RepoController }
