@@ -1,3 +1,13 @@
-<div class="all-repos" ng-repeat="repo in allRepoData">
-	<div>hi</div>
+<div class="all-repos">
+	<div class="home-page-repo" ng-repeat="repo in vm.allRepoData">
+		<span>{{ repo.title }}</span>
+		<span>{{ repo.create_date }}</span>
+		<span>{{ repo.oc_login }}</span>
+		<span>{{ repo.language }}</span>
+		<span>{{ repo.title }}</span>
+		<br>
+		<span>{{ repo.description }}</span>
+		<span>{{ repo.github }}</span>
+		<a href="/#/repos/{{repo.id}}">View Comments</a>
+	</div>
 </div>
