@@ -4,7 +4,7 @@
 	{{ vm.repoData.title }}
 	{{ vm.repoData.description }}
 	{{ vm.repoData.language }}
-	<span ng-click="vm.reply()">Reply</span>
+	<span ng-click="vm.comment()">Reply</span>
 	<form ng-show="vm.showreplyform" ng-submit="vm.commentSubmit(comment)">
 		<input type="textarea" name="reply" ng-model="comment.content">
 		<button>Submit Comment</button>
@@ -13,7 +13,13 @@
 		<div class="single-comment" ng-repeat="comment in vm.comments">
 			{{ comment.github }} 1 point {{ comment.timestamp }} ago.
 			{{ comment.content }}
-			<!-- <div class="comment-reply" ng-repeat="reply in comment"></div> -->
+
+			<span ng-click="vm.toggleShown(comment)">Reply</span>
+			<form ng-show="comment.shown" ng-submit="vm.replySubmit(reply)">
+				<input type="textarea" name="reply-content" ng-model="reply.content">
+				<input type="hidden" name="reply-parent-id" ng-model="reply.parent_id" ng-init="reply.parent_id=comment.id">
+				<button>Submit Reply</button>
+			</form>
 		</div>
 	</div>
 </div>
