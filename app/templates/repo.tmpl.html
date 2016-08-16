@@ -1,11 +1,17 @@
 <div class="single-repo">
-	{{ vm.repoData.github }}
+	<a href="/#/users/{{ vm.repoData.github }}">{{ vm.repoData.github }}</a>
 	<a href="{{vm.repoData.oc_url}}">{{ vm.repoData.oc_login }}</a>
 	{{ vm.repoData.title }}
 	{{ vm.repoData.description }}
 	{{ vm.repoData.language }}
-
-	<div class="comment-block" ng-repeat="comment in comments">
-		
+	<span ng-click="vm.reply()">Reply</span>
+	<form ng-show="vm.showreplyform" ng-submit="vm.commentSubmit(comment)">
+		<input type="textarea" name="reply" ng-model="comment">
+		<button>Submit Comment</button>
+	</form>
+	<div class="comment-block">
+		<div class="single-comment" ng-repeat="comment in comments">
+			<div class="comment-reply" ng-repeat="reply in comment"></div>
+		</div>
 	</div>
 </div>

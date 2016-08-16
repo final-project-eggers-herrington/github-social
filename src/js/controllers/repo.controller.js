@@ -1,5 +1,8 @@
 function RepoController (RepoService, $stateParams) {
 	let vm = this;
+	vm.reply = reply;
+	vm.showreplyform = false;
+	vm.commentSubmit = commentSubmit;
 
 	let id = $stateParams.repoid;
 	console.log(id)
@@ -7,6 +10,16 @@ function RepoController (RepoService, $stateParams) {
 		vm.repoData = res.data[0]
 		console.log(vm.repoData)
 	});
+
+	function reply () {
+		vm.showreplyform = true;
+	}
+
+	function commentSubmit (comment) {
+		RepoService.commentSubmit(comment).then(res=>{
+			console.log(res)
+		})
+	}
 }
 
 RepoController.$inject = ['RepoService', '$stateParams'];
