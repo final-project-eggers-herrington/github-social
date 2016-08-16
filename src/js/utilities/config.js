@@ -35,8 +35,13 @@ function config ($stateProvider, $urlRouterProvider) {
 			templateUrl: 'templates/searchpage.tmpl.html',
 			controller: 'SearchPageController as vm'
 		})
+		.state('error404', {
+			url: '/nuggets',
+			templateUrl: 'templates/error404.tmpl.html',
+			controller: 'Error404Controller as vm'
+		})
 
-	$urlRouterProvider.otherwise('/');
+	$urlRouterProvider.otherwise('/nuggets');
 }
 
 config.$inject = ['$stateProvider', '$urlRouterProvider'];
