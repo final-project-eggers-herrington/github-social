@@ -1,4 +1,4 @@
-<div class="search-results" ng-repeat="search in vm.searchItems">
+<div class="search-results" ng-repeat="search in vm.searchItems | limitTo: vm.limit">
 	<div class="single-result" ng-click="vm.toggleClass()">
 		<div>{{ search.name }}</div>
 		<div>{{ search.description }}</div>
@@ -15,4 +15,5 @@
 			</form>
 		</div>
 	</div>
+	<span ng-click="vm.viewMore()">View More</span>
 </div>

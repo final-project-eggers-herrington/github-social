@@ -1,6 +1,7 @@
-function RepoService ($http, SERVER) {
+function RepoService ($http, SERVER, $cookies) {
 	this.getRepoSingle = getRepoSingle;
 	this.commentSubmit = commentSubmit;
+	this.viewAllComments = ViewAllComments;
 
 	function getRepoSingle (id) {
 		return $http({
@@ -10,14 +11,22 @@ function RepoService ($http, SERVER) {
 			});
 	}
 
-	function commentSubmit (comment) {
+	function commentSubmit (obj) {
+		let token = $cookies.get('access_token');
 		return $http({
 				method: 'POST',
-				url: SERVER.URL + 'comment',
-				data: {comment: comment}
+				headers: {
+					'Authorization': `Bearer ${token}`
+				},
+				url: SERVER.URL + 'post/comment',
+				data: obj
 			});
+	}
+
+	function ViewAllComments () {
+		return $http.get(SERVER.URL + 'allcomments');
 	}
 }
 
-RepoService.$inject = ['$http', 'SERVER'];
+RepoService.$inject = ['$http', 'SERVER', '$cookies'];
 export { RepoService }
