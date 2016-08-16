@@ -1,7 +1,7 @@
 function RepoService ($http, SERVER, $cookies) {
 	this.getRepoSingle = getRepoSingle;
 	this.commentSubmit = commentSubmit;
-	this.viewAllComments = ViewAllComments;
+	this.viewAllComments = viewAllComments;
 
 	function getRepoSingle (id) {
 		return $http({
@@ -23,8 +23,8 @@ function RepoService ($http, SERVER, $cookies) {
 			});
 	}
 
-	function ViewAllComments () {
-		return $http.get(SERVER.URL + 'allcomments');
+	function viewAllComments (id) {
+		return $http.post(SERVER.URL + 'repo/comments', {repo_id: id});
 	}
 }
 
