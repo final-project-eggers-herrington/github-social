@@ -4,7 +4,6 @@ function ProfileService ($http, GITHUB, $cookies, $state) {
 	this.getUsersRepos = getUsersRepos;
 
 	function getProfile (username) {
-		console.log(username)
 		return $http.get(GITHUB.URL + `users/${username}`)
 	}
 
