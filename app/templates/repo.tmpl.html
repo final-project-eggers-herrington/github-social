@@ -11,15 +11,29 @@
 	</form>
 	<div class="comment-block">
 		<div class="single-comment" ng-repeat="comment in vm.comments">
-			{{ comment.github }} 1 point {{ comment.timestamp }} ago.
+			<span class="block">{{ comment.github }} 1 point {{ comment.created_at }}</span>
 			{{ comment.content }}
 
 			<span ng-click="vm.toggleShown(comment)">Reply</span>
 			<form ng-show="comment.shown" ng-submit="vm.replySubmit(reply)">
-				<input type="textarea" name="reply-content" ng-model="reply.content">
-				<input type="hidden" name="reply-parent-id" ng-model="reply.parent_id" ng-init="reply.parent_id=comment.id">
+				<input type="textarea" name="reply-content"   ng-model="reply.content">
+				<input type="hidden"   name="reply-parent-id" ng-model="reply.parent_id" ng-init="reply.parent_id=comment.id">
 				<button>Submit Reply</button>
 			</form>
+			<div class="single-reply" ng-repeat="reply in comment.replies">
+				<span class="block">{{ reply.github }} 1 point {{ reply.created_at }}</span>
+				{{ reply.content }}
+				<span ng-click="vm.toggleShown(reply2)">Reply</span>
+				<form ng-show="reply2.shown" ng-submit="vm.replySubmit(reply2)">
+					<input type="textarea" name="reply2-content"   ng-model="reply2.content">
+					<input type="hidden"   name="reply2-parent-id" ng-model="reply2.parent_id" ng-init="reply2.parent_id=reply.id">
+				<button>Submit Reply</button>
+				</form>
+				<div class="single-reply" ng-repeat="subreply in reply.replies">
+					<span class="block">{{ subreply.github }} 1 point {{ subreply.created_at }}</span>
+					{{ subreply.content }}
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
