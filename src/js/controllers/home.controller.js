@@ -11,7 +11,6 @@ function HomeController (HomeService) {
 
 	HomeService.getAllRepos().then(res => {
 		vm.allRepoData = res.data;
-		console.log(vm.allRepoData)
 	})
 }
 

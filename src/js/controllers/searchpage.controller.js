@@ -4,14 +4,14 @@ function SearchPageController ($stateParams, SearchPageService, $cookies) {
 	let vm = this;
 	vm.toggleClass = toggleClass;
 	vm.postSubmit  = postSubmit;
+	vm.viewMore = viewMore;
 	vm.searchItems = {};
 
 	let limit = 20;
 	vm.limit = limit;
 
 	function viewMore () {
-		vm.limit + 20;
-		console.log(vm.limit)
+		vm.limit = vm.limit + 20;
 	}
 
 	let searchTerm = $stateParams.searchquery;
@@ -19,7 +19,6 @@ function SearchPageController ($stateParams, SearchPageService, $cookies) {
 	SearchPageService.secondSearch(searchTerm).then(function(res) {
 		console.log(res)
 		vm.searchItems = res.data.items;
-		// console.log(vm.searchItems);
 	})
 
 	function toggleClass () {

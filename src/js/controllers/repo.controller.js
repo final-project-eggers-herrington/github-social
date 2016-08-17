@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-function RepoController (RepoService, $stateParams, $cookies) {
+function RepoController (RepoService, $stateParams, $cookies, $state) {
 	let vm = this;
 	vm.comment = comment;
 	vm.showreplyform = false;
@@ -11,7 +11,6 @@ function RepoController (RepoService, $stateParams, $cookies) {
 	let id = $stateParams.repoid;
 	RepoService.getRepoSingle(id).then(res => {
 		vm.repoData = res.data[0]
-		console.log(vm.repoData)
 	});
 
 	function comment () {
@@ -56,9 +55,6 @@ function RepoController (RepoService, $stateParams, $cookies) {
 					}
 				}
 			});
-			console.log(vm.comments);
-
-
 		})
 	}
 
@@ -81,7 +77,8 @@ function RepoController (RepoService, $stateParams, $cookies) {
 		obj.parent_id = comment.parent_id;
 
 		RepoService.commentSubmit(obj).then(res=>{
-			console.log('commentSubmit:', res)
+			console.log(res)
+			$state.go($state.current, {}, {reload: true});
 		})
 
 		viewAllComments();
@@ -97,9 +94,10 @@ function RepoController (RepoService, $stateParams, $cookies) {
 
 		RepoService.commentSubmit(obj).then(res=>{
 			console.log(res)
+			$state.go($state.current, {}, {reload: true})
 		});
 	}
 }
 
-RepoController.$inject = ['RepoService', '$stateParams', '$cookies'];
+RepoController.$inject = ['RepoService', '$stateParams', '$cookies', '$state'];
 export { RepoController }

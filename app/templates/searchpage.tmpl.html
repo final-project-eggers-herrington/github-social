@@ -1,18 +1,20 @@
-<div class="search-results" ng-repeat="search in vm.searchItems | limitTo: vm.limit">
-	<div class="single-result" ng-click="vm.toggleClass()">
-		<div>{{ search.name }}</div>
-		<div>{{ search.description }}</div>
-		<div>{{ search.language }}</div>
-		<div>{{ search.created_at }}</div>
+<div class="allsearches">
+	<div class="search-results" ng-repeat="search in vm.searchItems | limitTo: vm.limit">
+		<div class="single-result" ng-click="vm.toggleClass()">
+			<div>{{ search.name }}</div>
+			<div>{{ search.description }}</div>
+			<div>{{ search.language }}</div>
+			<div>{{ search.created_at }}</div>
 
-		<div class="hidden single-result-popup">
-			<form ng-submit="vm.postSubmit(search)">
-				<div>{{ search.name }}</div>
-				<div>{{ search.description }}</div>
-				<div>{{ search.language }}</div>
-				<div>{{ search.created_at }}</div>
-				<button>Post to GitHub Social</button>
-			</form>
+			<div class="hidden single-result-popup">
+				<form ng-submit="vm.postSubmit(search)">
+					<div>{{ search.name }}</div>
+					<div>{{ search.description }}</div>
+					<div>{{ search.language }}</div>
+					<div>{{ search.created_at }}</div>
+					<button>Post to GitHub Social</button>
+				</form>
+			</div>
 		</div>
 	</div>
 	<span ng-click="vm.viewMore()">View More</span>
