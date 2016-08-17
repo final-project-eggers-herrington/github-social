@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 function RepoController (RepoService, $stateParams, $cookies) {
 	let vm = this;
 	vm.comment = comment;
@@ -7,7 +9,6 @@ function RepoController (RepoService, $stateParams, $cookies) {
 	vm.toggleShown = toggleShown;
 
 	let id = $stateParams.repoid;
-	console.log(id)
 	RepoService.getRepoSingle(id).then(res => {
 		vm.repoData = res.data[0]
 		console.log(vm.repoData)
@@ -24,11 +25,40 @@ function RepoController (RepoService, $stateParams, $cookies) {
 
 	function viewAllComments () {
 		RepoService.viewAllComments(id).then(res=>{
-			vm.comments = res.data;
 			res.data.forEach(function(datum){
 				datum.shown = false;
 			})
 			console.log('viewAllComments:', res)
+			vm.comments = [];
+			vm.replies = [];
+			res.data.filter(function (obj) {
+				if (obj.is_child === 0 || obj.is_child === false) {
+					vm.comments.push(obj)
+				} else {
+					vm.replies.push(obj)
+				}
+			});
+
+			vm.replies.forEach( reply => {
+				let comment = _.find(vm.comments, { 'id': reply.parent_id });
+				if (comment) {
+					if (_.isArray(comment.replies)) {
+						comment.replies.push(reply);
+					} else {
+						comment.replies = [reply];
+					}					
+				} else {
+					let comment = _.find(vm.replies, { 'id': reply.parent_id });
+					if (_.isArray(comment.replies)) {
+						comment.replies.push(reply);
+					} else {
+						comment.replies = [reply];
+					}
+				}
+			});
+			console.log(vm.comments);
+
+
 		})
 	}
 
