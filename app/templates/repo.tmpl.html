@@ -4,7 +4,7 @@
 	{{ vm.repoData.title }}
 	{{ vm.repoData.description }}
 	{{ vm.repoData.language }}
-	<span ng-click="vm.comment()">Reply</span>
+	<span ng-click="vm.comment()" ng-show="vm.replyShown">Reply</span>
 	<form ng-show="vm.showreplyform" ng-submit="vm.commentSubmit(comment)">
 		<input type="textarea" name="reply" ng-model="comment.content">
 		<button>Submit Comment</button>
@@ -14,7 +14,7 @@
 			<span class="block">{{ comment.github }} 1 point {{ comment.created_at }}</span>
 			{{ comment.content }}
 
-			<span ng-click="vm.toggleShown(comment)">Reply</span>
+			<span ng-click="vm.toggleShown(comment)" ng-show="vm.replyShown">Reply</span>
 			<form ng-show="comment.shown" ng-submit="vm.replySubmit(reply)">
 				<input type="textarea" name="reply-content"   ng-model="reply.content">
 				<input type="hidden"   name="reply-parent-id" ng-model="reply.parent_id" ng-init="reply.parent_id=comment.id">
@@ -23,7 +23,7 @@
 			<div class="single-reply" ng-repeat="reply in comment.replies">
 				<span class="block">{{ reply.github }} 1 point {{ reply.created_at }}</span>
 				{{ reply.content }}
-				<span ng-click="vm.toggleShown(reply2)">Reply</span>
+				<span ng-click="vm.toggleShown(reply2)" ng-show="vm.replyShown">Reply</span>
 				<form ng-show="reply2.shown" ng-submit="vm.replySubmit(reply2)">
 					<input type="textarea" name="reply2-content"   ng-model="reply2.content">
 					<input type="hidden"   name="reply2-parent-id" ng-model="reply2.parent_id" ng-init="reply2.parent_id=reply.id">
