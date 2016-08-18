@@ -130,7 +130,9 @@ function RepoController (RepoService, $stateParams, $cookies, $state) {
 	}
 
 	function deletePost (id) {
-		RepoService.deletePost(id);
+		RepoService.deletePost(id).then(()=>{
+			$state.go($state.current, {}, {reload: true});
+		});
 	}
 
 	function editPost (content, id) {
@@ -138,8 +140,9 @@ function RepoController (RepoService, $stateParams, $cookies, $state) {
 		obj.content = content.new_content;
 		obj.id = id;
 
-		RepoService.editPost(obj);
-		$state.go($state.current, {}, {reload: true});
+		RepoService.editPost(obj).then(()=>{
+			$state.go($state.current, {}, {reload: true});
+		});
 	}
 
 	function init () {

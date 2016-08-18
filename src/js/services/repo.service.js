@@ -37,7 +37,7 @@ function RepoService ($http, SERVER, $cookies) {
 				'Authorization': `Bearer ${token}`
 			},
 			url: SERVER.URL + 'delete/comment',
-			data: {id: id}
+			data: {comment_id: id}
 		});
 	}
 
