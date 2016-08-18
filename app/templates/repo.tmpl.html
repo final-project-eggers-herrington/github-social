@@ -11,26 +11,50 @@
 	</form>
 	<div class="comment-block">
 		<div class="single-comment" ng-repeat="comment in vm.comments">
-			<span class="block">{{ comment.github }} 1 point {{ comment.created_at }} <span ng-show="comment.account" ng-click="vm.deletePost(comment.id)">Delete</span></span>
+			<span class="block">
+				{{ comment.github }} 1 point {{ comment.created_at }} 
+				<span ng-show="comment.account" ng-click="vm.deletePost(comment.id)">Delete</span>
+				<span ng-show="comment.account" ng-click="vm.editShown(comment)">Edit</span>
+				<form ng-show="comment.edit" ng-submit="vm.editPost(commentEdit, comment.id)">
+					<input type="textarea" name="comment-edit" ng-model="commentEdit.new_content" ng-value="comment.content">
+					<button>Edit Comment</button>
+				</form>
+			</span>
 			{{ comment.content }}
 
 			<span ng-click="vm.toggleShown(comment)" ng-show="vm.replyShown">Reply</span>
 			<form ng-show="comment.shown" ng-submit="vm.replySubmit(reply)">
 				<input type="textarea" name="reply-content"   ng-model="reply.content">
 				<input type="hidden"   name="reply-parent-id" ng-model="reply.parent_id" ng-init="reply.parent_id=comment.id">
-				<button>Submit Reply</button>
+				<button>Submit Comment</button>
 			</form>
 			<div class="single-reply" ng-repeat="reply in comment.replies">
-				<span class="block">{{ reply.github }} 1 point {{ reply.created_at }} <span ng-show="reply.account" ng-click="vm.deletePost(reply.id)">Delete</span></span>
+				<span class="block">
+					{{ reply.github }} 1 point {{ reply.created_at }}
+					<span ng-show="reply.account" ng-click="vm.deletePost(reply.id)">Delete</span>
+					<span ng-show="reply.account" ng-click="vm.editShown(reply)">Edit</span>
+					<form ng-show="reply.edit" ng-submit="vm.editPost(replyEdit, reply.id)">
+						<input type="textarea" name="reply-edit" ng-model="replyEdit.new_content" ng-value="reply.content">
+						<button>Edit Comment</button>
+					</form>
+				</span>
 				{{ reply.content }}
 				<span ng-click="vm.toggleShown(reply2)" ng-show="vm.replyShown">Reply</span>
 				<form ng-show="reply2.shown" ng-submit="vm.replySubmit(reply2)">
 					<input type="textarea" name="reply2-content"   ng-model="reply2.content">
 					<input type="hidden"   name="reply2-parent-id" ng-model="reply2.parent_id" ng-init="reply2.parent_id=reply.id">
-				<button>Submit Reply</button>
+					<button>Submit Comment</button>
 				</form>
 				<div class="single-reply" ng-repeat="subreply in reply.replies">
-					<span class="block">{{ subreply.github }} 1 point {{ subreply.created_at }} <span ng-show="subreply.account" ng-click="vm.deletePost(subreply.id)">Delete</span></span>
+					<span class="block">
+						{{ subreply.github }} 1 point {{ subreply.created_at }} 
+						<span ng-show="subreply.account" ng-click="vm.deletePost(subreply.id)">Delete</span>
+						<span ng-show="subreply.account" ng-click="vm.editShown(subreply)">Edit</span>
+						<form ng-show="subreply.edit" ng-submit="vm.editPost(subreplyEdit, subreply.id)">
+							<input type="textarea" name="subreply" ng-model="subreplyEdit.new_content" ng-value="subreply.content">
+							<button>Edit Comment</button>
+						</form>
+					</span>
 					{{ subreply.content }}
 				</div>
 			</div>

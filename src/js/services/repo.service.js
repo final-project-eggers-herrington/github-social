@@ -3,6 +3,9 @@ function RepoService ($http, SERVER, $cookies) {
 	this.commentSubmit = commentSubmit;
 	this.viewAllComments = viewAllComments;
 	this.deletePost = deletePost;
+	this.editPost = editPost;
+
+	let token = $cookies.get('access_token');
 
 	function getRepoSingle (id) {
 		return $http({
@@ -13,15 +16,14 @@ function RepoService ($http, SERVER, $cookies) {
 	}
 
 	function commentSubmit (obj) {
-		let token = $cookies.get('access_token');
 		return $http({
-				method: 'POST',
-				headers: {
-					'Authorization': `Bearer ${token}`
-				},
-				url: SERVER.URL + 'post/comment',
-				data: obj
-			});
+			method: 'POST',
+			headers: {
+				'Authorization': `Bearer ${token}`
+			},
+			url: SERVER.URL + 'post/comment',
+			data: obj
+		});
 	}
 
 	function viewAllComments (id) {
@@ -29,7 +31,26 @@ function RepoService ($http, SERVER, $cookies) {
 	}
 
 	function deletePost (id) {
-		console.log(id)
+		return $http({
+			method: 'POST',
+			headers: {
+				'Authorization': `Bearer ${token}`
+			},
+			url: SERVER.URL + 'delete/comment',
+			data: {id: id}
+		});
+	}
+
+	function editPost (obj) {
+		console.log(obj);
+		// return $http({
+		// 	method: 'PUT',
+		// 	headers: {
+		// 		'Authorization': `Bearer ${token}`
+		// 	},
+		// 	url: SERVER.URL + 'edit/comment',
+		// 	data: obj
+		// });
 	}
 }
 
