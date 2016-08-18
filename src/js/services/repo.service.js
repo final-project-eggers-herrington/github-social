@@ -2,6 +2,7 @@ function RepoService ($http, SERVER, $cookies) {
 	this.getRepoSingle = getRepoSingle;
 	this.commentSubmit = commentSubmit;
 	this.viewAllComments = viewAllComments;
+	this.deletePost = deletePost;
 
 	function getRepoSingle (id) {
 		return $http({
@@ -25,6 +26,10 @@ function RepoService ($http, SERVER, $cookies) {
 
 	function viewAllComments (id) {
 		return $http.post(SERVER.URL + 'repo/comments', {repo_id: id});
+	}
+
+	function deletePost (id) {
+		console.log(id)
 	}
 }
 
