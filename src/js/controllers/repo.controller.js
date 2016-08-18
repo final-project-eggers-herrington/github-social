@@ -7,6 +7,17 @@ function RepoController (RepoService, $stateParams, $cookies, $state) {
 	vm.commentSubmit = commentSubmit;
 	vm.replySubmit = replySubmit;
 	vm.toggleShown = toggleShown;
+	vm.replyShown = false;
+
+	function logStatusCheck () {
+		if (!$cookies.get('access_token')) {
+			vm.replyShown = false;
+		} else {
+			vm.replyShown = true;
+		}
+	}
+
+	logStatusCheck ();
 
 	let id = $stateParams.repoid;
 	RepoService.getRepoSingle(id).then(res => {
