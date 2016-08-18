@@ -11,7 +11,7 @@
 	</form>
 	<div class="comment-block">
 		<div class="single-comment" ng-repeat="comment in vm.comments">
-			<span class="block">{{ comment.github }} 1 point {{ comment.created_at }}</span>
+			<span class="block">{{ comment.github }} 1 point {{ comment.created_at }} <span ng-show="comment.account" ng-click="vm.deletePost(comment.id)">Delete</span></span>
 			{{ comment.content }}
 
 			<span ng-click="vm.toggleShown(comment)" ng-show="vm.replyShown">Reply</span>
@@ -21,7 +21,7 @@
 				<button>Submit Reply</button>
 			</form>
 			<div class="single-reply" ng-repeat="reply in comment.replies">
-				<span class="block">{{ reply.github }} 1 point {{ reply.created_at }}</span>
+				<span class="block">{{ reply.github }} 1 point {{ reply.created_at }} <span ng-show="reply.account" ng-click="vm.deletePost(reply.id)">Delete</span></span>
 				{{ reply.content }}
 				<span ng-click="vm.toggleShown(reply2)" ng-show="vm.replyShown">Reply</span>
 				<form ng-show="reply2.shown" ng-submit="vm.replySubmit(reply2)">
@@ -30,7 +30,7 @@
 				<button>Submit Reply</button>
 				</form>
 				<div class="single-reply" ng-repeat="subreply in reply.replies">
-					<span class="block">{{ subreply.github }} 1 point {{ subreply.created_at }}</span>
+					<span class="block">{{ subreply.github }} 1 point {{ subreply.created_at }} <span ng-show="subreply.account" ng-click="vm.deletePost(subreply.id)">Delete</span></span>
 					{{ subreply.content }}
 				</div>
 			</div>
