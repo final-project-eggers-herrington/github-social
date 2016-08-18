@@ -8,8 +8,9 @@ function RepoController (RepoService, $stateParams, $cookies, $state) {
 	vm.replySubmit = replySubmit;
 	vm.toggleShown = toggleShown;
 	vm.replyShown = false;
-	vm.account = false;
 	vm.deletePost = deletePost;
+	vm.editPost = editPost;
+	vm.editShown = editShown;
 
 	let accessToken   = $cookies.get('access_token');
 	let githubAccount = $cookies.get('github_account');
@@ -48,6 +49,7 @@ function RepoController (RepoService, $stateParams, $cookies, $state) {
 			vm.allComments = res.data;
 			vm.allComments.forEach(function(datum){
 				datum.shown = false;
+				datum.edit = false;
 			});
 
 			console.log('viewAllComments:', res)
@@ -82,6 +84,7 @@ function RepoController (RepoService, $stateParams, $cookies, $state) {
 			vm.replies = res.data;
 			vm.replies.forEach(function(datum){
 				datum.shown = false;
+				datum.edit = false;
 			})
 		})
 	}
@@ -122,8 +125,21 @@ function RepoController (RepoService, $stateParams, $cookies, $state) {
 		})
 	}
 
+	function editShown (obj) {
+		obj.edit = !obj.edit
+	}
+
 	function deletePost (id) {
 		RepoService.deletePost(id);
+	}
+
+	function editPost (content, id) {
+		let obj = {}
+		obj.content = content.new_content;
+		obj.id = id;
+
+		RepoService.editPost(obj);
+		$state.go($state.current, {}, {reload: true});
 	}
 
 	function init () {

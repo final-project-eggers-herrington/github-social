@@ -9,6 +9,7 @@
 		<span>{{ repo.description }}</span>
 		<a href="/#/users/{{repo.github}}">{{ repo.github }}</a>
 		<a href="/#/repos/{{repo.id}}">View Comments</a>
+		<span ng-show="repo.account" ng-click="vm.deletePost(repo.id)">Delete</span>
 	</div>
 	<span ng-click="vm.viewMore()">View More</span>
 </div>
