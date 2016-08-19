@@ -3,6 +3,7 @@
 	<a href="{{vm.repoData.oc_url}}">{{ vm.repoData.oc_login }}</a>
 	{{ vm.repoData.title }}
 	{{ vm.repoData.description }}
+	{{ vm.repoData.user_description }}
 	{{ vm.repoData.language }}
 	<span ng-click="vm.comment()" ng-show="vm.replyShown">Reply</span>
 	<form ng-show="vm.showreplyform" ng-submit="vm.commentSubmit(comment)">
