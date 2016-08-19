@@ -16,7 +16,6 @@ function HomeController (HomeService, $cookies, $state) {
 	function getAllRepoData () {
 		HomeService.getAllRepos().then(res => {
 			vm.allRepoData = res.data;
-			console.log(vm.allRepoData)
 			opCheck();
 		})
 	}

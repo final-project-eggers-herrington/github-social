@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-function SearchPageController ($stateParams, SearchPageService, $cookies) {
+function SearchPageController ($stateParams, SearchPageService, $cookies, $state) {
 	let vm = this;
 	vm.postSubmit  = postSubmit;
 	vm.viewMore = viewMore;
@@ -19,7 +19,6 @@ function SearchPageController ($stateParams, SearchPageService, $cookies) {
 	let searchTerm = $stateParams.searchquery;
 
 	SearchPageService.secondSearch(searchTerm).then(function(res) {
-		console.log(res)
 		vm.searchItems = res.data.items;
 		vm.searchItems.forEach(function (datum){
 			datum.shown = false;
@@ -38,11 +37,9 @@ function SearchPageController ($stateParams, SearchPageService, $cookies) {
 		obj.create_date      = search.created_at;
 		obj.user_description = searchform.user_description;
 
-		console.log(obj)
-
-		SearchPageService.postItem(obj).then( res => {
-			console.log(res)
-		});
+		SearchPageService.postItem(obj).then( function (res) {
+			$state.go('root.repo-single', {repoid: res.data.id});
+		})
 	}
 
 	function popupOpen (obj) {
@@ -54,5 +51,5 @@ function SearchPageController ($stateParams, SearchPageService, $cookies) {
 	}
 }
 
-SearchPageController.$inject = ['$stateParams', 'SearchPageService', '$cookies'];
+SearchPageController.$inject = ['$stateParams', 'SearchPageService', '$cookies', '$state'];
 export { SearchPageController }

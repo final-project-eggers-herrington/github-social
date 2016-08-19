@@ -13,7 +13,6 @@ function LayoutService ($cookies, $state, $http, GITHUB) {
 	}
 
 	function search (search) {
-		console.log(search)
 		$state.go('root.search', {searchquery: search.q});
 	}
 
