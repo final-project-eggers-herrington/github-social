@@ -1,25 +1,27 @@
 <div class="allsearches">
 	<div class="search-results" ng-repeat="search in vm.searchItems | limitTo: vm.limit">
-		<div class="single-result">
-			<div  ng-click="vm.popupOpen(search)">
-				<div>{{ search.name }}</div>
-				<div>{{ search.description }}</div>
-				<div>{{ search.language }}</div>
-				<div>{{ search.created_at }}</div>
-			</div>
-
-			<div class="single-result-popup" ng-show="search.shown">
-				<span ng-click="vm.popupClose(search)">X</span>
-				<form ng-submit="vm.postSubmit(search, searchform)">
-					<div>{{ search.name }}</div>
-					<div>{{ search.description }}</div>
-					<div>{{ search.language }}</div>
-					<div>{{ search.created_at }}</div>
-					<input type="textarea" name="user_description" ng-model="searchform.user_description">
-					<button>Post to GitHub Social</button>
-				</form>
+		<div class="home-page-repo" ng-click="vm.popupOpen(search)">
+			<span class="title">{{ search.name }}</span>
+			<span class="timestamp">{{ search.created_at }}</span>
+			<div>
+				<span class="language">{{ search.language }}</span>
+				<span class="desc">{{ search.description }}</span>
 			</div>
 		</div>
+
+		<div class="single-result-popup" ng-show="search.shown">
+			<span class="close" ng-click="vm.popupClose(search)">X</span>
+			<form ng-submit="vm.postSubmit(search, searchform)">
+				<span class="title">{{ search.name }}</span>
+				<span class="timestamp">{{ search.created_at }}</span>
+				<div>
+					<span class="language">{{ search.language }}</span>
+					<span class="desc">{{ search.description }}</span>
+				</div>
+				<textarea name="user_description" ng-model="searchform.user_description"></textarea>
+				<button class="sign-in-button">Post to GitHub Social</button>
+			</form>
+		</div>
 	</div>
-	<span ng-click="vm.viewMore()">View More</span>
+	<span class="view-more" ng-click="vm.viewMore()">View More</span>
 </div>

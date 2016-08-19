@@ -9,7 +9,6 @@ function HomeService (SERVER, $http, $cookies) {
 	}
 
 	function deletePost (id) {
-		console.log(id)
 		return $http({
 			method: 'POST',
 			headers: {

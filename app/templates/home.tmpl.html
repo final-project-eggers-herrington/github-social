@@ -1,16 +1,27 @@
 <div class="all-repos">
 	<div class="home-page-repo" ng-repeat="repo in vm.allRepoData | limitTo: vm.limit">
-		<span>{{ repo.title }}</span>
-		<span>{{ repo.create_date }}</span>
-		<span>{{ repo.oc_login }}</span>
-		<span>{{ repo.language }}</span>
-		<span>{{ repo.title }}</span>
+		<div>
+			<a class="repo-url" href="{{repo.repo_url}}">
+				<span class="title">{{ repo.title }}</span>
+				<span class="timestamp">{{ repo.create_date }}</span>
+			</a>
+		</div>
+		<div class="github-repo-data">
+			<a class="oc-url" href="{{repo.oc_url}}"><span class="oc-login">{{ repo.oc_login }}</span></a>
+			<span class="language">{{ repo.language }}</span>
+		</div>
+		<div class="description-data">
+			<span class="desc">{{ repo.description }}</span>
+		</div>
+		<div>
+			<span class="user-desc">{{ repo.user_description }}</span>
+		</div>
+		<div class="user-data">
+			<a href="/#/users/{{repo.github}}" class="github-link">{{ repo.github }}</a>
+			<a href="/#/repos/{{repo.id}}" class="comments-link">View Comments</a>
+			<span class="delete" ng-show="repo.account" ng-click="vm.deletePost(repo.id)">Delete</span>
+		</div>
 		
-		<span>{{ repo.description }}</span>
-		<span>{{ repo.user_description }}</span>
-		<a href="/#/users/{{repo.github}}">{{ repo.github }}</a>
-		<a href="/#/repos/{{repo.id}}">View Comments</a>
-		<span ng-show="repo.account" ng-click="vm.deletePost(repo.id)">Delete</span>
 	</div>
-	<span ng-click="vm.viewMore()">View More</span>
+	<div class="view-more" ng-click="vm.viewMore()">View More</div>
 </div>

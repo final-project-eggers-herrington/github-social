@@ -52,8 +52,6 @@ function RepoController (RepoService, $stateParams, $cookies, $state) {
 				datum.edit = false;
 			});
 
-			console.log('viewAllComments:', res)
-
 			vm.comments = [];
 			vm.replies = [];
 
