@@ -1,4 +1,4 @@
-function HomeController (HomeService, $cookies) {
+function HomeController (HomeService, $cookies, $state) {
 	let vm = this;
 	vm.viewMore = viewMore;
 	vm.deletePost = deletePost;
@@ -32,7 +32,9 @@ function HomeController (HomeService, $cookies) {
 	}
 
 	function deletePost (id) {
-		HomeService.deletePost(id);
+		HomeService.deletePost(id).then(()=>{
+			$state.go($state.current, {}, {reload: true});
+		});
 	}
 
 	function init (){
@@ -42,5 +44,5 @@ function HomeController (HomeService, $cookies) {
 	init();
 }
 
-HomeController.$inject = ['HomeService', '$cookies'];
+HomeController.$inject = ['HomeService', '$cookies', '$state'];
 export { HomeController };
