@@ -16,7 +16,7 @@ function HomeService (SERVER, $http, $cookies) {
 				'Authorization': `Bearer ${token}`
 			},
 			url: SERVER.URL + 'delete/repo',
-			data: {id: id}
+			data: {repo_id: id}
 		});
 	}
 }
