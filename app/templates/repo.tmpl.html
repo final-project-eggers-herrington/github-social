@@ -1,62 +1,121 @@
 <div class="single-repo">
-	<a href="/#/users/{{ vm.repoData.github }}">{{ vm.repoData.github }}</a>
-	<a href="{{vm.repoData.oc_url}}">{{ vm.repoData.oc_login }}</a>
-	{{ vm.repoData.title }}
-	{{ vm.repoData.description }}
-	{{ vm.repoData.user_description }}
-	{{ vm.repoData.language }}
-	<span ng-click="vm.comment()" ng-show="vm.replyShown">Reply</span>
-	<form ng-show="vm.showreplyform" ng-submit="vm.commentSubmit(comment)">
-		<input type="textarea" name="reply" ng-model="comment.content">
-		<button>Submit Comment</button>
+	<div class="single-page-repo">
+		<div>
+			<a class="repo-url" href="{{vm.repoData.repo_url}}">
+				<span class="title">{{ vm.repoData.title }}</span>
+			</a>
+			<span class="timestamp">{{ vm.repoData.create_date }}</span>
+		</div>
+		<div class="github-repo-data">
+			<a class="oc-url" href="{{vm.repoData.oc_url}}"><span class="oc-login">{{ vm.repoData.oc_login }}</span></a>
+			<span class="language">{{ vm.repoData.language }}</span>
+		</div>
+		<div class="description-data">
+			<span class="desc">{{ vm.repoData.description }}</span>
+		</div>
+		<div>
+			<span class="user-desc">{{ vm.repoData.user_description }}</span>
+			<span class="edit" ng-show="vm.repoData.account" ng-click="vm.popupOpen(vm.repoData)">Edit</span>
+			<div class="single-result-popup" ng-show="vm.repoData.shown">
+				<form ng-submit="vm.editPostContent(form, vm.repoData.id)">
+					<span class="close" ng-click="vm.popupClose(vm.repoData)">X</span>
+					<span class="title">{{ vm.repoData.name }}</span>
+					<span class="timestamp">{{ vm.repoData.created_at }}</span>
+					<div>
+						<span class="language">{{ vm.repoData.language }}</span>
+						<span class="desc">{{ vm.repoData.description }}</span>
+					</div>
+					<textarea class="user-desc-input" name="user_description" ng-model="form.new_description" placeholder="{{vm.repoData.user_description}}"></textarea>
+					<button class="sign-in-button" class="sign-in-button">Save Edit</button>
+				</form>
+			</div>
+		</div>
+		<div class="user-data">
+			<a href="/#/users/{{vm.repoData.github}}" class="github-link">{{ vm.repoData.github }}</a>
+			<span class="reply" ng-click="vm.comment()" ng-show="vm.replyShown">Reply</span>
+			<span class="delete" ng-show="vm.repoData.account" ng-click="vm.deletePost(vm.repoData.id)">Delete</span>
+		</div>
+	</div>
+	<form class="single-post-form" ng-show="vm.showreplyform" ng-submit="vm.commentSubmit(comment)">
+		<textarea ng-model="comment.content"></textarea>
+		<button class="sign-in-button">Submit Comment</button>
 	</form>
 	<div class="comment-block">
 		<div class="single-comment" ng-repeat="comment in vm.comments">
+			<div class="comment-upvote-box">
+				<div ng-click="vm.upvote()"><i class="fa vote fa-chevron-up" aria-hidden="true"></i></div>
+				<div ng-click="vm.downvote()"><i class="fa vote fa-chevron-down" aria-hidden="true"></i></div>
+			</div>
 			<span class="block">
-				{{ comment.github }} 1 point {{ comment.created_at }} 
-				<span ng-show="comment.account" ng-click="vm.deletePost(comment.id)">Delete</span>
-				<span ng-show="comment.account" ng-click="vm.editShown(comment)">Edit</span>
+				<span>
+					<a class="github-link" href="/#/users/{{comment.github}}">{{ comment.github }}</a>
+					<span class="upvote">1 point</span>
+					<span class="timestamp-single">{{ comment.created_at }}</span>
+				</span>
+				<span class="delete-single" ng-show="comment.account" ng-click="vm.deletePost(comment.id)">Delete</span>
+				<span class="edit" ng-show="comment.account" ng-click="vm.editShown(comment)">Edit</span>
 				<form ng-show="comment.edit" ng-submit="vm.editPost(commentEdit, comment.id)">
-					<input type="textarea" name="comment-edit" ng-model="commentEdit.new_content" ng-value="comment.content">
-					<button>Edit Comment</button>
+					<textarea ng-model="commentEdit.new_content" placeholder="{{comment.content}}"></textarea>
+					<button class="sign-in-button">Edit Comment</button>
 				</form>
 			</span>
-			{{ comment.content }}
-
-			<span ng-click="vm.toggleShown(comment)" ng-show="vm.replyShown">Reply</span>
+			<div>
+				{{ comment.content }}
+			</div>
+			<span class="reply" ng-click="vm.toggleShown(comment)" ng-show="vm.replyShown">Reply</span>
 			<form ng-show="comment.shown" ng-submit="vm.replySubmit(reply)">
-				<input type="textarea" name="reply-content"   ng-model="reply.content">
-				<input type="hidden"   name="reply-parent-id" ng-model="reply.parent_id" ng-init="reply.parent_id=comment.id">
-				<button>Submit Comment</button>
+				<textarea ng-model="reply.content"></textarea>
+				<input type="hidden" name="reply-parent-id" ng-model="reply.parent_id" ng-init="reply.parent_id=comment.id">
+				<button class="sign-in-button">Submit Comment</button>
 			</form>
 			<div class="single-reply" ng-repeat="reply in comment.replies">
+				<div class="comment-upvote-box">
+					<div ng-click="vm.upvote()"><i class="fa vote fa-chevron-up" aria-hidden="true"></i></div>
+					<div ng-click="vm.downvote()"><i class="fa vote fa-chevron-down" aria-hidden="true"></i></div>
+				</div>
 				<span class="block">
-					{{ reply.github }} 1 point {{ reply.created_at }}
-					<span ng-show="reply.account" ng-click="vm.deletePost(reply.id)">Delete</span>
-					<span ng-show="reply.account" ng-click="vm.editShown(reply)">Edit</span>
+					<span>
+						<a class="github-link" href="/#/users/{{reply.github}}">{{ reply.github }}</a>
+						<span class="upvote">1 point</span>
+						<span class="timestamp-single">{{ reply.created_at }}</span>
+					</span>
+					<span class="delete-single" ng-show="reply.account" ng-click="vm.deletePost(reply.id)">Delete</span>
+					<span class="edit" ng-show="reply.account" ng-click="vm.editShown(reply)">Edit</span>
 					<form ng-show="reply.edit" ng-submit="vm.editPost(replyEdit, reply.id)">
-						<input type="textarea" name="reply-edit" ng-model="replyEdit.new_content" ng-value="reply.content">
-						<button>Edit Comment</button>
+						<textarea ng-model="replyEdit.new_content" placeholder="{{reply.content}}"></textarea>
+						<button class="sign-in-button">Edit Comment</button>
 					</form>
 				</span>
-				{{ reply.content }}
-				<span ng-click="vm.toggleShown(reply2)" ng-show="vm.replyShown">Reply</span>
+				<div>
+					{{ reply.content }}
+				</div>
+				<span class="reply" ng-click="vm.toggleShown(reply2)" ng-show="vm.replyShown">Reply</span>
 				<form ng-show="reply2.shown" ng-submit="vm.replySubmit(reply2)">
-					<input type="textarea" name="reply2-content"   ng-model="reply2.content">
-					<input type="hidden"   name="reply2-parent-id" ng-model="reply2.parent_id" ng-init="reply2.parent_id=reply.id">
-					<button>Submit Comment</button>
+					<textarea ng-model="reply2.content"></textarea>
+					<input type="hidden" name="reply2-parent-id" ng-model="reply2.parent_id" ng-init="reply2.parent_id=reply.id">
+					<button class="sign-in-button">Submit Comment</button>
 				</form>
 				<div class="single-reply" ng-repeat="subreply in reply.replies">
+					<div class="comment-upvote-box">
+						<div ng-click="vm.upvote()"><i class="fa vote fa-chevron-up" aria-hidden="true"></i></div>
+						<div ng-click="vm.downvote()"><i class="fa vote fa-chevron-down" aria-hidden="true"></i></div>
+					</div>
 					<span class="block">
-						{{ subreply.github }} 1 point {{ subreply.created_at }} 
-						<span ng-show="subreply.account" ng-click="vm.deletePost(subreply.id)">Delete</span>
-						<span ng-show="subreply.account" ng-click="vm.editShown(subreply)">Edit</span>
+						<span>
+							<a class="github-link" href="/#/users/{{subreply.github}}">{{ subreply.github }}</a>
+							<span class="upvote">1 point</span>
+							<span class="timestamp-single">{{ subreply.created_at }}</span>
+						</span>
+						<span class="delete-single" ng-show="subreply.account" ng-click="vm.deletePost(subreply.id)">Delete</span>
+						<span class="edit" ng-show="subreply.account" ng-click="vm.editShown(subreply)">Edit</span>
 						<form ng-show="subreply.edit" ng-submit="vm.editPost(subreplyEdit, subreply.id)">
-							<input type="textarea" name="subreply" ng-model="subreplyEdit.new_content" ng-value="subreply.content">
-							<button>Edit Comment</button>
+							<textarea ng-model="subreplyEdit.new_content" placeholder="{{subreply.content}}"></textarea>
+							<button class="sign-in-button">Edit Comment</button>
 						</form>
 					</span>
-					{{ subreply.content }}
+					<div>
+						{{ subreply.content }}
+					</div>			
 				</div>
 			</div>
 		</div>

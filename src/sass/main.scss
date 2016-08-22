@@ -3,6 +3,16 @@
 	font-size: 14px;
 }
 
+textarea {
+	border: 1px solid #d8d8d8;
+	padding: 5px;
+	border-radius: 2px;
+	width: 95%;
+	&:focus {
+		outline: none;
+	}
+}
+
 .container {
 	width: 100%;
 	height: 700px;
@@ -17,7 +27,17 @@
 	background-color: #f5f5f5;
 	height: 28px;
 	padding: 10px 0;
-	border-bottom: 1px solid #efefef;
+	border-bottom: 1px solid #d8d8d8;
+}
+
+.logo {
+	float: left;
+	margin-left: 145px;
+
+	img {
+		height: 28px;
+		width: 28px;
+	}
 }
 
 .links {
@@ -32,14 +52,14 @@
 
 .search-bar {
 	float: left;
-	padding-left: 100px;
+	margin-left: 20px;
 }
 
 .github-search {
 	input {
 		width: 300px;
 		border-radius: 3px;
-		border: 2px solid #efefef;
+		border: 2px solid #ddd;
 		padding: 5px;
 		font-size: 12px;
 		box-shadow: none;
@@ -78,6 +98,9 @@
 	font-size: 14px;
 	font-weight: 600;
 	line-height: 20px;
+	&:focus {
+		outline: none;
+	}
 }
 
 .register-link {
@@ -101,10 +124,21 @@
 	background-color: #fff;
 }
 
+.search-repo {
+	margin: 25px;
+	padding: 10px;
+	border: 1px solid #d8d8d8;
+	width: 75%;
+	margin-right: 10%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	min-height: 35px;
+}
+
 .user-info {
+	float: left;
 	padding-top: 75px;
 	margin-left: 150px;
-	float: left;
 	img {
 		height: 230px;
 		width: 230px;
@@ -170,9 +204,10 @@
 	margin-left: 50px;
 	margin-top: 75px;
 	height: 500px;
-	border: 2px solid #efefef;
+	border: 2px solid #d8d8d8;
 	padding: 20px;
 	overflow: scroll;
+	width: 600px;
 }
 
 .results {
@@ -180,9 +215,44 @@
 	margin-left: 50px;
 	margin-top: 75px;
 	height: 500px;
-	border: 2px solid #efefef;
+	border: 2px solid #d8d8d8;
 	padding: 20px;
 	overflow: scroll;
+}
+
+.user-repo-search {
+	text-align: center;
+	margin-left: 100px;
+	width: 90%;
+	padding-top: 25px;
+	float: left;
+	input {
+		width: 300px;
+		border-radius: 3px;
+		border: 2px solid #d8d8d8;
+		padding: 5px;
+		font-size: 12px;
+		box-shadow: none;
+		&:focus {
+			outline: none;
+			border: 2px solid #51a7e1;
+			box-shadow: inset 0 1px 2px rgba(0,0,0,0.075),0 0 5px rgba(81,167,232,0.5);
+		}
+	}
+	button {
+		width: 325px;
+	}
+}
+
+.profile-repo {
+	padding: 10px;
+	border: 1px solid #d8d8d8;
+	width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	min-height: 35px;
 }
 
 //search
@@ -190,7 +260,7 @@
 .single-result-popup {
 	position: fixed;
 	padding: 10px;
-	border: 1px solid #efefef;
+	border: 1px solid #d8d8d8;
 	background-color: #fff;
 	left: 35%;
 	right: 35%;
@@ -209,19 +279,39 @@
 	float: right;
 	padding-bottom: 10px;
 	color: red;
+	cursor: pointer;
+}
+
+.allsearches {
+	margin-left: auto;
+	margin-right: auto;
 }
 
 //home page
+
+.all-repos {
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .home-page-repo {
+	float: left;
 	padding: 10px;
-	margin: 25px;
-	border: 1px solid #efefef;
-	width: 50%;
+	border: 1px solid #d8d8d8;
+	width: 75%;
+	margin-right: 10%;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 .title {
 	font-weight: bold;
 	font-size: 14px;
+	color: #4078c0;
+	&:hover {
+		text-decoration: underline;
+	}
 }
 
 .timestamp {
@@ -230,7 +320,7 @@
 
 .github-repo-data {
 	padding-bottom: 10px;
-	border-bottom: 1px solid #efefef;
+	border-bottom: 1px solid #d8d8d8;
 }
 
 .description-data {
@@ -249,13 +339,20 @@
 	font-size: 12px;
 	color: #4078c0;
 	text-decoration: none;
+	&:hover {
+		text-decoration: underline;
+	}
 }
 
 .comments-link {
+	padding-left: 10px;
 	font-size: 12px;
 	font-weight: bold;
 	color: #4078c0;
 	text-decoration: none;
+	&:hover {
+		text-decoration: underline;
+	}
 }
 
 .delete {
@@ -264,6 +361,9 @@
 	font-weight: bold;
 	color: red;
 	cursor: pointer;
+	&:hover {
+		text-decoration: underline;
+	}
 }
 
 .block {
@@ -272,25 +372,118 @@
 
 .repo-url {
 	text-decoration: none;
-	color: #4078c0;
 }
 
 .oc-url {
 	text-decoration: none;
 	color: #4078c0;
+	&:hover {
+		text-decoration: underline;
+	}
 }
 
 .single-comment {
-	padding: 10px;
+	padding: 15px;
 }
 
 .single-reply {
-	padding: 10px;
+	padding: 15px;
 }
 
 .view-more {
 	margin-left: 10px;
-	padding-top: 20px;
+	margin-top: 20px;
 	font-size: 13px;
 	color: #4078c0;
+	cursor: pointer;
+}
+
+.edit {
+	color: #4078c0;
+	cursor: pointer;
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.button-box {
+	clear: both;
+	padding-top: 20px;
+}
+
+.user-desc-input {
+	max-width: 95%;
+}
+
+.upvote-box {
+	float: left;
+	margin-top: 35px;
+	text-align: center;
+	width: 7%;
+}
+
+.upvote-count {
+	padding-top: 10px;
+}
+
+//single repo page
+
+.single-repo {
+	margin-left: 25px;
+	margin-right: 25px;
+}
+
+.reply {
+	font-size: 13px;
+	cursor: pointer;
+	color: #4078c0;
+}
+
+.timestamp-single {
+	font-size: 13px;
+}
+
+.single-page-repo {
+	padding: 10px;
+	border: 1px solid #d8d8d8;
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.single-post-form {
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.comment-block {
+	width: 95%;
+	margin: auto;
+}
+
+.delete-single {
+	font-size: 12px;
+	font-weight: bold;
+	color: red;
+	cursor: pointer;
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.comment-upvote-box {
+	float: left;
+	padding-right: 10px;
+}
+
+.vote {
+	color: black;
+	transition: color .2s ease;
+	&:hover {
+		color: #4078c0;
+		cursor: pointer;
+	}
 }

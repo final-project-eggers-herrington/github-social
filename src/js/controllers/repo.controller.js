@@ -26,6 +26,7 @@ function RepoController (RepoService, $stateParams, $cookies, $state) {
 	let id = $stateParams.repoid;
 	RepoService.getRepoSingle(id).then(res => {
 		vm.repoData = res.data[0]
+		vm.repoData.account = false;
 	});
 
 	function comment () {
@@ -135,6 +136,7 @@ function RepoController (RepoService, $stateParams, $cookies, $state) {
 
 	function editPost (content, id) {
 		let obj = {}
+		
 		obj.content = content.new_content;
 		obj.id = id;
 

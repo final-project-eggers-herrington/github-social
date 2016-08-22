@@ -1,27 +1,54 @@
 <div class="all-repos">
-	<div class="home-page-repo" ng-repeat="repo in vm.allRepoData | limitTo: vm.limit">
-		<div>
-			<a class="repo-url" href="{{repo.repo_url}}">
-				<span class="title">{{ repo.title }}</span>
-				<span class="timestamp">{{ repo.create_date }}</span>
-			</a>
+	<div class="repository" ng-repeat="repo in vm.allRepoData | limitTo: vm.limit">
+		<div class="upvote-box">
+			<div>
+				<div ng-click="vm.upvote()"><i class="fa vote fa-chevron-up" aria-hidden="true"></i></div>
+				<div ng-click="vm.downvote()"><i class="fa vote fa-chevron-down" aria-hidden="true"></i></div>
+			</div>
+			<div class="upvote-count">
+				<span>{{ repo.upvote_count }} 14342</span>
+			</div>
 		</div>
-		<div class="github-repo-data">
-			<a class="oc-url" href="{{repo.oc_url}}"><span class="oc-login">{{ repo.oc_login }}</span></a>
-			<span class="language">{{ repo.language }}</span>
-		</div>
-		<div class="description-data">
-			<span class="desc">{{ repo.description }}</span>
-		</div>
-		<div>
-			<span class="user-desc">{{ repo.user_description }}</span>
-		</div>
-		<div class="user-data">
-			<a href="/#/users/{{repo.github}}" class="github-link">{{ repo.github }}</a>
-			<a href="/#/repos/{{repo.id}}" class="comments-link">View Comments</a>
-			<span class="delete" ng-show="repo.account" ng-click="vm.deletePost(repo.id)">Delete</span>
+		<div class="home-page-repo">
+			<div>
+				<a class="repo-url" href="{{repo.repo_url}}">
+					<span class="title">{{ repo.title }}</span>
+				</a>
+					<span class="timestamp">{{ repo.create_date }}</span>
+			</div>
+			<div class="github-repo-data">
+				<a class="oc-url" href="{{repo.oc_url}}"><span class="oc-login">{{ repo.oc_login }}</span></a>
+				<span class="language">{{ repo.language }}</span>
+			</div>
+			<div class="description-data">
+				<span class="desc">{{ repo.description }}</span>
+			</div>
+			<div>
+				<span class="user-desc">{{ repo.user_description }}</span>
+				<span class="edit" ng-show="repo.account" ng-click="vm.popupOpen(repo)">Edit</span>
+				<div class="single-result-popup" ng-show="repo.shown">
+					<form ng-submit="vm.editPost(form, repo.id)">
+						<span class="close" ng-click="vm.popupClose(repo)">X</span>
+						<span class="title">{{ repo.name }}</span>
+						<span class="timestamp">{{ repo.created_at }}</span>
+						<div>
+							<span class="language">{{ repo.language }}</span>
+							<span class="desc">{{ repo.description }}</span>
+						</div>
+						<textarea class="user-desc-input" name="user_description" ng-model="form.new_description" placeholder="{{repo.user_description}}"></textarea>
+						<button class="sign-in-button">Save Edit</button>
+					</form>
+				</div>
+			</div>
+			<div class="user-data">
+				<a href="/#/users/{{repo.github}}" class="github-link">{{ repo.github }}</a>
+				<a href="/#/repos/{{repo.id}}" class="comments-link">View Comments</a>
+				<span class="delete" ng-show="repo.account" ng-click="vm.deletePost(repo.id)">Delete</span>
+			</div>
 		</div>
 		
 	</div>
-	<div class="view-more" ng-click="vm.viewMore()">View More</div>
+	<div class="button-box">
+		<span class="view-more" ng-click="vm.viewMore()">View More</span>
+	</div>
 </div>

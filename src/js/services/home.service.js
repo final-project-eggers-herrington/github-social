@@ -1,6 +1,7 @@
 function HomeService (SERVER, $http, $cookies) {
 	this.getAllRepos = getAllRepos;
 	this.deletePost = deletePost;
+	this.editPost = editPost;
 
 	let token = $cookies.get('access_token');
 
@@ -17,6 +18,17 @@ function HomeService (SERVER, $http, $cookies) {
 			url: SERVER.URL + 'delete/repo',
 			data: {repo_id: id}
 		});
+	}
+
+	function editPost (obj) {
+		return $http({
+			method: 'PUT',
+			headers: {
+				'Authorization': `Bearer ${token}`
+			},
+			url: SERVER.URL + `post/repo/${obj.id}`,
+			data: {user_description: obj.user_description}
+		})
 	}
 }
 
