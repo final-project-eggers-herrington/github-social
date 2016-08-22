@@ -17,7 +17,7 @@
 				<span ng-show="comment.account" ng-click="vm.deletePost(comment.id)">Delete</span>
 				<span ng-show="comment.account" ng-click="vm.editShown(comment)">Edit</span>
 				<form ng-show="comment.edit" ng-submit="vm.editPost(commentEdit, comment.id)">
-					<input type="textarea" name="comment-edit" ng-model="commentEdit.new_content" ng-value="comment.content">
+					<textarea ng-model="commentEdit.new_content" placeholder="{{comment.content}}"></textarea>
 					<button>Edit Comment</button>
 				</form>
 			</span>
@@ -35,7 +35,7 @@
 					<span ng-show="reply.account" ng-click="vm.deletePost(reply.id)">Delete</span>
 					<span ng-show="reply.account" ng-click="vm.editShown(reply)">Edit</span>
 					<form ng-show="reply.edit" ng-submit="vm.editPost(replyEdit, reply.id)">
-						<input type="textarea" name="reply-edit" ng-model="replyEdit.new_content" ng-value="reply.content">
+						<textarea ng-model="replyEdit.new_content" placeholder="{{reply.content}}"></textarea>
 						<button>Edit Comment</button>
 					</form>
 				</span>
@@ -52,7 +52,7 @@
 						<span ng-show="subreply.account" ng-click="vm.deletePost(subreply.id)">Delete</span>
 						<span ng-show="subreply.account" ng-click="vm.editShown(subreply)">Edit</span>
 						<form ng-show="subreply.edit" ng-submit="vm.editPost(subreplyEdit, subreply.id)">
-							<input type="textarea" name="subreply" ng-model="subreplyEdit.new_content" ng-value="subreply.content">
+							<textarea ng-model="subreplyEdit.new_content" placeholder="{{subreply.content}}"></textarea>
 							<button>Edit Comment</button>
 						</form>
 					</span>

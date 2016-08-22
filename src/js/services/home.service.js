@@ -18,6 +18,17 @@ function HomeService (SERVER, $http, $cookies) {
 			data: {repo_id: id}
 		});
 	}
+
+	function editPost (obj) {
+		return $http({
+			method: 'PUT',
+			headers: {
+				'Authorization': `Bearer ${token}`
+			},
+			url: SERVER.URL + `post/repo/${obj.id}`,
+			data: obj.user_description
+		})
+	}
 }
 
 HomeService.$inject = ['SERVER', '$http', '$cookies'];

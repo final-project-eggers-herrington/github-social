@@ -135,6 +135,7 @@ function RepoController (RepoService, $stateParams, $cookies, $state) {
 
 	function editPost (content, id) {
 		let obj = {}
+		
 		obj.content = content.new_content;
 		obj.id = id;
 
