@@ -209,6 +209,7 @@
 	float: right;
 	padding-bottom: 10px;
 	color: red;
+	cursor: pointer;
 }
 
 //home page
@@ -216,12 +217,16 @@
 	padding: 10px;
 	margin: 25px;
 	border: 1px solid #efefef;
-	width: 50%;
+	width: 80%;
 }
 
 .title {
 	font-weight: bold;
 	font-size: 14px;
+	color: #4078c0;
+	&:hover {
+		text-decoration: underline;
+	}
 }
 
 .timestamp {
@@ -249,13 +254,20 @@
 	font-size: 12px;
 	color: #4078c0;
 	text-decoration: none;
+	&:hover {
+		text-decoration: underline;
+	}
 }
 
 .comments-link {
+	padding-left: 10px;
 	font-size: 12px;
 	font-weight: bold;
 	color: #4078c0;
 	text-decoration: none;
+	&:hover {
+		text-decoration: underline;
+	}
 }
 
 .delete {
@@ -264,6 +276,9 @@
 	font-weight: bold;
 	color: red;
 	cursor: pointer;
+	&:hover {
+		text-decoration: underline;
+	}
 }
 
 .block {
@@ -272,12 +287,14 @@
 
 .repo-url {
 	text-decoration: none;
-	color: #4078c0;
 }
 
 .oc-url {
 	text-decoration: none;
 	color: #4078c0;
+	&:hover {
+		text-decoration: underline;
+	}
 }
 
 .single-comment {
@@ -293,4 +310,13 @@
 	padding-top: 20px;
 	font-size: 13px;
 	color: #4078c0;
+	cursor: pointer;
+}
+
+.edit {
+	color: #4078c0;
+	cursor: pointer;
+	&:hover {
+		text-decoration: underline;
+	}
 }

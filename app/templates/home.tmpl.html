@@ -3,8 +3,8 @@
 		<div>
 			<a class="repo-url" href="{{repo.repo_url}}">
 				<span class="title">{{ repo.title }}</span>
-				<span class="timestamp">{{ repo.create_date }}</span>
 			</a>
+				<span class="timestamp">{{ repo.create_date }}</span>
 		</div>
 		<div class="github-repo-data">
 			<a class="oc-url" href="{{repo.oc_url}}"><span class="oc-login">{{ repo.oc_login }}</span></a>
@@ -15,6 +15,7 @@
 		</div>
 		<div>
 			<span class="user-desc">{{ repo.user_description }}</span>
+			<span class="edit" ng-show="repo.account" ng-click="vm.editPost(repo.id)">Edit</span>
 		</div>
 		<div class="user-data">
 			<a href="/#/users/{{repo.github}}" class="github-link">{{ repo.github }}</a>

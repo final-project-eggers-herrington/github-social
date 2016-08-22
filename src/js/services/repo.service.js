@@ -42,15 +42,14 @@ function RepoService ($http, SERVER, $cookies) {
 	}
 
 	function editPost (obj) {
-		console.log(obj);
-		// return $http({
-		// 	method: 'PUT',
-		// 	headers: {
-		// 		'Authorization': `Bearer ${token}`
-		// 	},
-		// 	url: SERVER.URL + 'edit/comment',
-		// 	data: obj
-		// });
+		return $http({
+			method: 'PUT',
+			headers: {
+				'Authorization': `Bearer ${token}`
+			},
+			url: SERVER.URL + `post/comment/${obj.id}`,
+			data: obj.content
+		});
 	}
 }
 
