@@ -20,7 +20,10 @@ textarea {
 }
 
 .content {
+	width: 95%;
 	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .nav {
@@ -42,7 +45,7 @@ textarea {
 
 .links {
 	float: right;
-	padding-right: 100px;
+	padding-right: 145px;
 	padding-top: 5px;
 	a {
 		text-decoration: none;
@@ -116,6 +119,10 @@ textarea {
 	width: 274px;
 	padding:20px;
 	border-radius: 3px;
+}
+
+.footer {
+	height: 75px;
 }
 
 //profile
@@ -204,7 +211,7 @@ textarea {
 	margin-left: 50px;
 	margin-top: 75px;
 	height: 500px;
-	border: 2px solid #d8d8d8;
+	border: 1px solid #d8d8d8;
 	padding: 20px;
 	overflow: scroll;
 	width: 600px;
@@ -253,6 +260,7 @@ textarea {
 	margin-top: 10px;
 	margin-bottom: 10px;
 	min-height: 35px;
+	box-shadow: 2px 2px 5px rgba(0,0,0,0.5)
 }
 
 //search
@@ -283,8 +291,7 @@ textarea {
 }
 
 .allsearches {
-	margin-left: auto;
-	margin-right: auto;
+	margin-left: 75px;
 }
 
 //home page
@@ -417,7 +424,7 @@ textarea {
 
 .upvote-box {
 	float: left;
-	margin-top: 35px;
+	margin-top: 40px;
 	text-align: center;
 	width: 7%;
 }
