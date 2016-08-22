@@ -15,7 +15,7 @@
 		</div>
 		<div>
 			<span class="user-desc">{{ vm.repoData.user_description }}</span>
-			<span class="edit" ng-show="vm.repoData.account" ng-click="vm.popupOpen(repo)">Edit</span>
+			<span class="edit" ng-show="vm.repoData.account" ng-click="vm.popupOpen(vm.repoData)">Edit</span>
 			<div class="single-result-popup" ng-show="vm.repoData.shown">
 				<form ng-submit="vm.editPostContent(form, vm.repoData.id)">
 					<span class="close" ng-click="vm.popupClose(vm.repoData)">X</span>

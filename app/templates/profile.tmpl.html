@@ -12,26 +12,58 @@
 	</div>
 	<div ng-hide="vm.results" class="user-repos">
 		<div class="single-user-repo" ng-repeat="repo in vm.userRepos">
+			<div class="profile-repo" ng-click="vm.popupOpen(repo)">
+			<span class="title">{{ repo.name }}</span>
+			<span class="timestamp">{{ repo.created_at }}</span>
 			<div>
-				<span>{{repo.name}}</span>
-				<span>{{repo.created_at}}</span>
-				<span>{{repo.language}}</span>
-				<a href="{{repo.html_url}}">View Repository</a>
+				<span class="language">{{ repo.language }}</span>
+				<span class="desc">{{ repo.description }}</span>
 			</div>
+		</div>
+
+		<div class="single-result-popup" ng-show="repo.shown">
+			<span class="close" ng-click="vm.popupClose(repo)">X</span>
+			<form ng-submit="vm.postSubmit(repo, searchform)">
+				<span class="title">{{ repo.name }}</span>
+				<span class="timestamp">{{ repo.created_at }}</span>
+				<div>
+					<span class="language">{{ repo.language }}</span>
+					<span class="desc">{{ repo.description }}</span>
+				</div>
+				<textarea name="user_description" ng-model="searchform.user_description"></textarea>
+				<button class="sign-in-button">Post to GitHub Social</button>
+			</form>
+		</div>
 		</div>
 	</div>
 	<div ng-show="vm.results" class="results">
 		<div class="single-user-repo" ng-repeat="filteredRepo in vm.filteredUserRepos">
+			<div class="search-repo" ng-click="vm.popupOpen(filteredRepo)">
+			<span class="title">{{ filteredRepo.name }}</span>
+			<span class="timestamp">{{ filteredRepo.created_at }}</span>
 			<div>
-				<span>{{filteredRepo.name}}</span>
-				<span>{{filteredRepo.created_at}}</span>
-				<span>{{filteredRepo.language}}</span>
-				<a href="{{filteredRepo.html_url}}">View Repository</a>
+				<span class="language">{{ filteredRepo.language }}</span>
+				<span class="desc">{{ filteredRepo.description }}</span>
 			</div>
 		</div>
+
+		<div class="single-result-popup" ng-show="filteredRepo.shown">
+			<span class="close" ng-click="vm.popupClose(filteredRepo)">X</span>
+			<form ng-submit="vm.postSubmit(filteredRepo, searchform)">
+				<span class="title">{{ filteredRepo.name }}</span>
+				<span class="timestamp">{{ filteredRepo.created_at }}</span>
+				<div>
+					<span class="language">{{ filteredRepo.language }}</span>
+					<span class="desc">{{ filteredRepo.description }}</span>
+				</div>
+				<textarea name="user_description" ng-model="searchform.user_description"></textarea>
+				<button class="sign-in-button">Post to GitHub Social</button>
+			</form>
+		</div>
+		</div>
 	</div>
-	<form ng-submit="vm.foo(repoSearch.repository)">
+	<form class="user-repo-search" ng-submit="vm.foo(repoSearch.repository)">
 		<input type="text" name="user-search" ng-model="repoSearch.repository">
-		<button>Search {{vm.userData.login}}'s Repositories</button>
+		<button class="sign-in-button">Search {{vm.userData.login}}'s Repositories</button>
 	</form>
 </div>

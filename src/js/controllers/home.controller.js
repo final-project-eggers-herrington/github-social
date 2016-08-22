@@ -48,7 +48,9 @@ function HomeController (HomeService, $cookies, $state) {
 		
 		obj.id = id;
 		obj.user_description = form.new_description;
-		HomeService.editPost(obj);
+		HomeService.editPost(obj).then(()=>{
+			$state.go($state.current, {}, {reload: true});
+		});
 	}
 
 	function popupOpen (obj) {

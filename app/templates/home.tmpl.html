@@ -27,7 +27,7 @@
 				<span class="user-desc">{{ repo.user_description }}</span>
 				<span class="edit" ng-show="repo.account" ng-click="vm.popupOpen(repo)">Edit</span>
 				<div class="single-result-popup" ng-show="repo.shown">
-					<form ng-submit="vm.editPostContent(form, repo.id)">
+					<form ng-submit="vm.editPost(form, repo.id)">
 						<span class="close" ng-click="vm.popupClose(repo)">X</span>
 						<span class="title">{{ repo.name }}</span>
 						<span class="timestamp">{{ repo.created_at }}</span>

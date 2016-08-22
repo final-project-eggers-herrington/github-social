@@ -26,6 +26,7 @@ function RepoController (RepoService, $stateParams, $cookies, $state) {
 	let id = $stateParams.repoid;
 	RepoService.getRepoSingle(id).then(res => {
 		vm.repoData = res.data[0]
+		vm.repoData.account = false;
 	});
 
 	function comment () {
