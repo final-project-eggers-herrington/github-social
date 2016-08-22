@@ -15,6 +15,7 @@ import { RegisterController }   from './controllers/register.controller';
 import { SearchPageController } from './controllers/searchpage.controller';
 import { RepoController }       from './controllers/repo.controller';
 import { Error404Controller }   from './controllers/error404.controller';
+import { WelcomeController }    from './controllers/welcome.controller';
 
 // Import services
 import { LoginService }        from './services/login.service';
@@ -25,6 +26,7 @@ import { HomeService }         from './services/home.service';
 import { SearchPageService }   from './services/searchpage.service';
 import { RepoService }         from './services/repo.service';
 import { Error404Service }     from './services/error404.service';
+import { WelcomeService }      from './services/welcome.service';
 
 angular
 	.module('app', ['ui.router', 'ngCookies'])
@@ -39,6 +41,7 @@ angular
 	.controller('SearchPageController', SearchPageController)
 	.controller('RepoController',       RepoController)
 	.controller('Error404Controller',   Error404Controller)
+	.controller('WelcomeController',    WelcomeController)
 	.service('LoginService',        LoginService)
 	.service('RegistrationService', RegistrationService)
 	.service('ProfileService',      ProfileService)
@@ -47,4 +50,5 @@ angular
 	.service('SearchPageService',   SearchPageService)
 	.service('RepoService',         RepoService)
 	.service('Error404Service',     Error404Service)
+	.service('WelcomeService',      WelcomeService)
 ;

@@ -390,11 +390,19 @@ textarea {
 }
 
 .single-comment {
-	padding: 15px;
+	padding: 10px;
+	margin: 15px;
+	border-left: 1px solid black;
+	padding-bottom: 0;
+	padding-top: 0;
 }
 
 .single-reply {
-	padding: 15px;
+	padding: 10px;
+	margin: 15px;
+	border-left: 1px solid black;
+	padding-bottom: 0;
+	padding-top: 0;
 }
 
 .view-more {
@@ -467,8 +475,7 @@ textarea {
 }
 
 .comment-block {
-	width: 95%;
-	margin: auto;
+	margin: 10px;
 }
 
 .delete-single {

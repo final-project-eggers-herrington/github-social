@@ -40,6 +40,11 @@ function config ($stateProvider, $urlRouterProvider) {
 			templateUrl: 'templates/error404.tmpl.html',
 			controller: 'Error404Controller as vm'
 		})
+		.state('welcome', {
+			url: '/welcome',
+			templateUrl: 'templates/welcome.tmpl.html',
+			controller: 'WelcomeController as vm'
+		})
 
 	$urlRouterProvider.otherwise('/nuggets');
 }
