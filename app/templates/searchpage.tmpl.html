@@ -1,6 +1,6 @@
 <div class="allsearches">
 	<div class="search-results" ng-repeat="search in vm.searchItems | limitTo: vm.limit">
-		<div class="home-page-repo" ng-click="vm.popupOpen(search)">
+		<div class="search-repo" ng-click="vm.popupOpen(search)">
 			<span class="title">{{ search.name }}</span>
 			<span class="timestamp">{{ search.created_at }}</span>
 			<div>

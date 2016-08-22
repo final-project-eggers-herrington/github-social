@@ -1,10 +1,12 @@
 <div class="all-repos">
 	<div class="repository" ng-repeat="repo in vm.allRepoData | limitTo: vm.limit">
 		<div class="upvote-box">
-			{{ repo.upvote_count }}
 			<div>
-				<span ng-click="vm.upvote()">^</span>
-				<span ng-click="vm.downvote()">v</span>
+				<div ng-click="vm.upvote()"><i class="fa vote fa-chevron-up" aria-hidden="true"></i></div>
+				<div ng-click="vm.downvote()"><i class="fa vote fa-chevron-down" aria-hidden="true"></i></div>
+			</div>
+			<div class="upvote-count">
+				<span>{{ repo.upvote_count }} 14342</span>
 			</div>
 		</div>
 		<div class="home-page-repo">
