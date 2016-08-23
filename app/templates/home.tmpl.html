@@ -1,7 +1,7 @@
 <div class="all-repos">
 	<div class="repository" ng-repeat="repo in vm.allRepoData | limitTo: vm.limit">
 		<div class="upvote-box">
-			<div>
+			<div class="upvote-buttons">
 				<div ng-click="vm.upvote()"><i class="fa vote fa-chevron-up" aria-hidden="true"></i></div>
 				<div ng-click="vm.downvote()"><i class="fa vote fa-chevron-down" aria-hidden="true"></i></div>
 			</div>
