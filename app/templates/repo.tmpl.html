@@ -40,6 +40,9 @@
 		<textarea ng-model="comment.content"></textarea>
 		<button class="sign-in-button">Submit Comment</button>
 	</form>
+
+	<div class="comment-break">Comments</div>
+
 	<div class="comment-block">
 		<div class="single-comment" ng-repeat="comment in vm.comments">
 			<div class="comment-upvote-box">
@@ -68,6 +71,7 @@
 				<input type="hidden" name="reply-parent-id" ng-model="reply.parent_id" ng-init="reply.parent_id=comment.id">
 				<button class="sign-in-button">Submit Comment</button>
 			</form>
+
 			<div class="single-reply" ng-repeat="reply in comment.replies">
 				<div class="comment-upvote-box">
 					<div ng-click="vm.upvote()"><i class="fa vote fa-chevron-up" aria-hidden="true"></i></div>
@@ -95,7 +99,8 @@
 					<input type="hidden" name="reply2-parent-id" ng-model="reply2.parent_id" ng-init="reply2.parent_id=reply.id">
 					<button class="sign-in-button">Submit Comment</button>
 				</form>
-				<div class="single-reply" ng-repeat="subreply in reply.replies">
+
+				<div class="single-subreply" ng-repeat="subreply in reply.replies">
 					<div class="comment-upvote-box">
 						<div ng-click="vm.upvote()"><i class="fa vote fa-chevron-up" aria-hidden="true"></i></div>
 						<div ng-click="vm.downvote()"><i class="fa vote fa-chevron-down" aria-hidden="true"></i></div>

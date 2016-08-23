@@ -13,7 +13,7 @@
 	<div ng-hide="vm.results" class="user-repos">
 		<div class="single-user-repo" ng-repeat="repo in vm.userRepos">
 			<div class="profile-repo" ng-click="vm.popupOpen(repo)">
-			<span class="title">{{ repo.name }}</span>
+			<a  class="title" href="{{repo.html_url}}"><span>{{ repo.name }}</span></a>
 			<span class="timestamp">{{ repo.created_at }}</span>
 			<div>
 				<span class="language">{{ repo.language }}</span>
@@ -24,7 +24,7 @@
 		<div class="single-result-popup" ng-show="repo.shown">
 			<span class="close" ng-click="vm.popupClose(repo)">X</span>
 			<form ng-submit="vm.postSubmit(repo, searchform)">
-				<span class="title">{{ repo.name }}</span>
+				<a href="{{repo.html_url}}" class="title"><span>{{ repo.name }}</span></a>
 				<span class="timestamp">{{ repo.created_at }}</span>
 				<div>
 					<span class="language">{{ repo.language }}</span>
@@ -39,7 +39,7 @@
 	<div ng-show="vm.results" class="results">
 		<div class="single-user-repo" ng-repeat="filteredRepo in vm.filteredUserRepos">
 			<div class="search-repo" ng-click="vm.popupOpen(filteredRepo)">
-			<span class="title">{{ filteredRepo.name }}</span>
+			<a href="{{filteredRepo.html_url}}"></a><span>{{ filteredRepo.name }}</span>
 			<span class="timestamp">{{ filteredRepo.created_at }}</span>
 			<div>
 				<span class="language">{{ filteredRepo.language }}</span>
@@ -50,7 +50,7 @@
 		<div class="single-result-popup" ng-show="filteredRepo.shown">
 			<span class="close" ng-click="vm.popupClose(filteredRepo)">X</span>
 			<form ng-submit="vm.postSubmit(filteredRepo, searchform)">
-				<span class="title">{{ filteredRepo.name }}</span>
+				<a class="title" href="{{filteredRepo.html_url}}"><span>{{ filteredRepo.name }}</span></a>
 				<span class="timestamp">{{ filteredRepo.created_at }}</span>
 				<div>
 					<span class="language">{{ filteredRepo.language }}</span>

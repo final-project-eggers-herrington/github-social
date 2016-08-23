@@ -1,14 +1,18 @@
 <div class="login-container">
 	<div class="login-box">
 		<form name="login" ng-submit="vm.login(user)" class="login">
-			<label>Email</label>
+			<div>Email</div>
 			<input type="email" name="username-login" ng-model="user.email">
-			<label>Password</label>
+			<div class="wrong" ng-show="vm.wrongemail">This email is not registered.</div>
+			<div>Password</div>
 			<input type="password" name="password-login" ng-model="user.password">
+			<div class="wrong" ng-show="vm.wrongpassword">Incorrect password.</div>
 			<button class="sign-in-button">Sign In</button>
 		</form>
 	</div>
 	<div class="sign-up-box">
-		<span>Don't have an account? <a class="register-link" href="/#/register">Sign up!</a></span>
+		<span>New to GitHub Social?</span>
+		<br>
+		<a class="register-link" href="/#/register">Create an Account.</a>
 	</div>
 </div>
