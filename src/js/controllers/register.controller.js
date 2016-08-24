@@ -7,7 +7,7 @@ function RegisterController (RegistrationService, $state, $cookies) {
 		RegistrationService.register(user).then( res => {
 			$cookies.put('access_token', res.data.access_token);
 			$cookies.put('github_account', res.data.github);
-			$state.go('root.login');
+			$state.go('login');
 		}, (error) => {
 			console.log(error);
 		});

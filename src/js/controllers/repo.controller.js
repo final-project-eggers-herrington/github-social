@@ -12,6 +12,11 @@ function RepoController (RepoService, $stateParams, $cookies, $state) {
 	vm.editPost = editPost;
 	vm.editShown = editShown;
 
+	vm.upvoteRepo      = upvoteRepo;
+	vm.downvoteRepo    = downvoteRepo;
+	vm.upvoteComment   = upvoteComment;
+	vm.downvoteComment = downvoteComment;
+
 	let accessToken   = $cookies.get('access_token');
 	let githubAccount = $cookies.get('github_account');
 
@@ -143,6 +148,34 @@ function RepoController (RepoService, $stateParams, $cookies, $state) {
 		RepoService.editPost(obj).then(()=>{
 			$state.go($state.current, {}, {reload: true});
 		});
+	}
+
+	function upvoteRepo (id, item) {
+		let obj  = {};
+		obj.id   = id;
+		obj.vote = 1;
+		RepoService.upvoteRepo(obj);
+	}
+
+	function downvoteRepo (id, item) {
+		let obj  = {};
+		obj.id   = id;
+		obj.vote = -1;
+		RepoService.downvoteRepo(obj);
+	}
+
+	function upvoteComment (id, item) {
+		let obj  = {};
+		obj.id   = id;
+		obj.vote = 1;
+		RepoService.upvoteComment(obj);
+	}
+
+	function downvoteComment (id) {
+		let obj  = {};
+		obj.id   = id;
+		obj.vote = -1;
+		RepoService.downvoteComment(obj);
 	}
 
 	function init () {

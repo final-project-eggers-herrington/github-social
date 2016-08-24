@@ -2,11 +2,11 @@
 	<div class="repository" ng-repeat="repo in vm.allRepoData | limitTo: vm.limit">
 		<div class="upvote-box">
 			<div class="upvote-buttons">
-				<div ng-click="vm.upvote()"><i class="fa vote fa-chevron-up" aria-hidden="true"></i></div>
-				<div ng-click="vm.downvote()"><i class="fa vote fa-chevron-down" aria-hidden="true"></i></div>
+				<div ng-click="vm.upvoteRepo(repo.id, repo)"><i class="fa vote fa-chevron-up" aria-hidden="true"></i></div>
+				<div ng-click="vm.downvoteRepo(repo.id, repo)"><i class="fa vote fa-chevron-down" aria-hidden="true"></i></div>
 			</div>
 			<div class="upvote-count">
-				<span>{{ repo.upvote_count }} 14342</span>
+				<span>{{ repo.upvote_count }}</span>
 			</div>
 		</div>
 		<div class="home-page-repo">
@@ -42,7 +42,7 @@
 			</div>
 			<div class="user-data">
 				<a href="/#/users/{{repo.github}}" class="github-link">{{ repo.github }}</a>
-				<a href="/#/repos/{{repo.id}}" class="comments-link">View Comments</a>
+				<a href="/#/repos/{{repo.id}}" class="comments-link">{{ repo.comment_total }} Comments</a>
 				<span class="delete" ng-show="repo.account" ng-click="vm.deletePost(repo.id)">Delete</span>
 			</div>
 		</div>

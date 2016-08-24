@@ -7,8 +7,7 @@
 			<form class="github-search" name="github-search" ng-submit="vm.search(search)"><input type="text" name="searchbar" ng-model="search.q" placeholder="Search repositories"></form>
 		</div>
 		<div class="links">
-			
-			<a href="/#/login" ng-hide="vm.isLoggedIn">Login</a>
+			<span><a href="/#/login" ng-hide="vm.isLoggedIn">Login</a></span>
 			<span ng-show="vm.isLoggedIn" ng-click="vm.logOut()">Logout</span>
 			<span class="profile-link" ng-click="vm.viewProfile()">Profile</span>
 		</div>

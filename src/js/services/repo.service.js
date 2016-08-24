@@ -4,6 +4,9 @@ function RepoService ($http, SERVER, $cookies) {
 	this.viewAllComments = viewAllComments;
 	this.deletePost = deletePost;
 	this.editPost = editPost;
+	
+	this.upvoteComment   = upvoteComment;
+	this.downvoteComment = downvoteComment;
 
 	let token = $cookies.get('access_token');
 
@@ -50,6 +53,28 @@ function RepoService ($http, SERVER, $cookies) {
 			url: SERVER.URL + `post/comment/${obj.id}`,
 			data: obj.content
 		});
+	}
+
+	function upvoteComment (obj) {
+		return $http({
+			method: 'PUT',
+			headers: {
+				'Authorization': `Bearer ${token}`
+			},
+			url: SERVER.URL + `vote/comment/${obj.id}`,
+			data: {vote: obj.vote}
+		})
+	}
+
+	function downvoteComment (obj) {
+		return $http({
+			method: 'PUT',
+			headers: {
+				'Authorization': `Bearer ${token}`
+			},
+			url: SERVER.URL + `vote/comment/${obj.id}`,
+			data: {vote: obj.vote}
+		})
 	}
 }
 

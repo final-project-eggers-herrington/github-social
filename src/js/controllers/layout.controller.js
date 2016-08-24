@@ -21,6 +21,7 @@ function LayoutController (LayoutService, $rootScope, $cookies) {
 			vm.isLoggedIn = true;
 		}
 	}
+	loginChecker();
 
 	function logOut () {
 		LayoutService.logOut();
