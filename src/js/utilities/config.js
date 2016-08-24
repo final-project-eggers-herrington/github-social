@@ -46,7 +46,7 @@ function config ($stateProvider, $urlRouterProvider) {
 			controller: 'WelcomeController as vm'
 		})
 
-	$urlRouterProvider.otherwise('/nuggets');
+	$urlRouterProvider.otherwise('/welcome');
 }
 
 config.$inject = ['$stateProvider', '$urlRouterProvider'];
