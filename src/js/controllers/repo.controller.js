@@ -89,6 +89,7 @@ function RepoController (RepoService, $stateParams, $cookies, $state) {
 			vm.replies.forEach(function(datum){
 				datum.shown = false;
 				datum.edit = false;
+				datum.upvote_count = 0;
 			})
 		})
 	}
