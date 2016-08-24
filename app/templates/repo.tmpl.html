@@ -46,13 +46,13 @@
 	<div class="comment-block">
 		<div class="single-comment" ng-repeat="comment in vm.comments">
 			<div class="comment-upvote-box">
-				<div ng-click="vm.upvote()"><i class="fa vote fa-chevron-up" aria-hidden="true"></i></div>
-				<div ng-click="vm.downvote()"><i class="fa vote fa-chevron-down" aria-hidden="true"></i></div>
+				<div ng-click="vm.upvoteComment(comment.id, comment)"><i class="fa vote fa-chevron-up" aria-hidden="true"></i></div>
+				<div ng-click="vm.downvoteComment(comment.id, comment)"><i class="fa vote fa-chevron-down" aria-hidden="true"></i></div>
 			</div>
 			<span class="block">
 				<span>
 					<a class="github-link" href="/#/users/{{comment.github}}">{{ comment.github }}</a>
-					<span class="upvote">1 point</span>
+					<span class="upvote">{{ comment.upvote_count }} points</span>
 					<span class="timestamp-single">{{ comment.created_at }}</span>
 				</span>
 				<span class="delete-single" ng-show="comment.account" ng-click="vm.deletePost(comment.id)">Delete</span>
@@ -74,13 +74,13 @@
 
 			<div class="single-reply" ng-repeat="reply in comment.replies">
 				<div class="comment-upvote-box">
-					<div ng-click="vm.upvote()"><i class="fa vote fa-chevron-up" aria-hidden="true"></i></div>
-					<div ng-click="vm.downvote()"><i class="fa vote fa-chevron-down" aria-hidden="true"></i></div>
+					<div ng-click="vm.upvoteComment(reply.id, reply)"><i class="fa vote fa-chevron-up" aria-hidden="true"></i></div>
+					<div ng-click="vm.downvoteComment(reply.id, reply)"><i class="fa vote fa-chevron-down" aria-hidden="true"></i></div>
 				</div>
 				<span class="block">
 					<span>
 						<a class="github-link" href="/#/users/{{reply.github}}">{{ reply.github }}</a>
-						<span class="upvote">1 point</span>
+						<span class="upvote">{{ reply.upvote_count }} points</span>
 						<span class="timestamp-single">{{ reply.created_at }}</span>
 					</span>
 					<span class="delete-single" ng-show="reply.account" ng-click="vm.deletePost(reply.id)">Delete</span>
@@ -102,13 +102,13 @@
 
 				<div class="single-subreply" ng-repeat="subreply in reply.replies">
 					<div class="comment-upvote-box">
-						<div ng-click="vm.upvote()"><i class="fa vote fa-chevron-up" aria-hidden="true"></i></div>
-						<div ng-click="vm.downvote()"><i class="fa vote fa-chevron-down" aria-hidden="true"></i></div>
+						<div ng-click="vm.upvoteComment(subreply.id, subreply)"><i class="fa vote fa-chevron-up" aria-hidden="true"></i></div>
+						<div ng-click="vm.downvoteComment(subreply.id, subreply)"><i class="fa vote fa-chevron-down" aria-hidden="true"></i></div>
 					</div>
 					<span class="block">
 						<span>
 							<a class="github-link" href="/#/users/{{subreply.github}}">{{ subreply.github }}</a>
-							<span class="upvote">1 point</span>
+							<span class="upvote">{{ subreply.upvote_count }} points</span>
 							<span class="timestamp-single">{{ subreply.created_at }}</span>
 						</span>
 						<span class="delete-single" ng-show="subreply.account" ng-click="vm.deletePost(subreply.id)">Delete</span>

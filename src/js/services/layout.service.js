@@ -6,7 +6,7 @@ function LayoutService ($cookies, $state, $http, GITHUB) {
 	function viewProfile () {
 		let account = $cookies.get('github_account')
 		if (account === undefined) {
-			$state.go('root.login')
+			$state.go('login')
 		} else {
 			$state.go('root.profile', { username: account })
 		}

@@ -10,6 +10,9 @@ function HomeController (HomeService, $cookies, $state) {
 	vm.popupOpen  = popupOpen;
 	vm.popupClose = popupClose;
 
+	vm.upvoteRepo      = upvoteRepo;
+	vm.downvoteRepo    = downvoteRepo;
+
 	let accessToken   = $cookies.get('access_token');
 	let githubAccount = $cookies.get('github_account');
 
@@ -20,6 +23,7 @@ function HomeController (HomeService, $cookies, $state) {
 	function getAllRepoData () {
 		HomeService.getAllRepos().then(res => {
 			vm.allRepoData = res.data;
+			console.log(vm.allRepoData)
 			vm.allRepoData.forEach(function(datum){
 				datum.shown = false;
 			})
@@ -59,6 +63,22 @@ function HomeController (HomeService, $cookies, $state) {
 
 	function popupClose (obj) {
 		obj.shown = false;
+	}
+
+	function upvoteRepo (id, item) {
+		let obj  = {};
+		obj.id   = id;
+		obj.vote = 1;
+		HomeService.upvoteRepo(obj).then((res)=>{
+			console.log(res)
+		});
+	}
+
+	function downvoteRepo (id, item) {
+		let obj  = {};
+		obj.id   = id;
+		obj.vote = -1;
+		HomeService.downvoteRepo(obj);
 	}
 
 	function init (){

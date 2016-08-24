@@ -4,7 +4,9 @@ function ProfileController (ProfileService, $stateParams) {
 	let vm = this
 	vm.foo = foo;
 	vm.results = false;
-	
+	vm.popupOpen  = popupOpen;
+	vm.popupClose = popupClose;
+
 	function init () {
 		ProfileService.getProfile($stateParams.username).then(function (res){
 			vm.userData = res.data;
@@ -21,6 +23,14 @@ function ProfileController (ProfileService, $stateParams) {
 				vm.results = true;
 			}
 		})
+	}
+
+	function popupOpen (obj) {
+		obj.shown = true;
+	}
+
+	function popupClose (obj) {
+		obj.shown = false;
 	}
 
 	init();

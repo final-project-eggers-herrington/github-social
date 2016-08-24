@@ -1,7 +1,9 @@
 function HomeService (SERVER, $http, $cookies) {
-	this.getAllRepos = getAllRepos;
-	this.deletePost = deletePost;
-	this.editPost = editPost;
+	this.getAllRepos     = getAllRepos;
+	this.deletePost      = deletePost;
+	this.editPost        = editPost;
+	this.upvoteRepo      = upvoteRepo;
+	this.downvoteRepo    = downvoteRepo;
 
 	let token = $cookies.get('access_token');
 
@@ -28,6 +30,28 @@ function HomeService (SERVER, $http, $cookies) {
 			},
 			url: SERVER.URL + `post/repo/${obj.id}`,
 			data: {user_description: obj.user_description}
+		})
+	}
+
+	function upvoteRepo (obj) {
+		return $http({
+			method: 'PUT',
+			headers: {
+				'Authorization': `Bearer ${token}`
+			},
+			url: SERVER.URL + `vote/repo/${obj.id}`,
+			data: {vote: obj.vote}
+		})
+	}
+
+	function downvoteRepo (obj) {
+		return $http({
+			method: 'PUT',
+			headers: {
+				'Authorization': `Bearer ${token}`
+			},
+			url: SERVER.URL + `vote/repo/${obj.id}`,
+			data: {vote: obj.vote}
 		})
 	}
 }

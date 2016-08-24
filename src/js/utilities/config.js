@@ -15,12 +15,12 @@ function config ($stateProvider, $urlRouterProvider) {
 			templateUrl: 'templates/repo.tmpl.html',
 			controller: 'RepoController as vm'
 		})
-		.state('root.login', {
+		.state('login', {
 			url: '/login',
 			templateUrl: 'templates/login.tmpl.html',
 			controller: 'LoginController as vm'
 		})
-		.state('root.register', {
+		.state('register', {
 			url: '/register',
 			templateUrl: 'templates/register.tmpl.html',
 			controller: 'RegisterController as vm'

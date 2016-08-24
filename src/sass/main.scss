@@ -97,6 +97,7 @@ textarea {
 	background-color: #60b044;
 	background-image: linear-gradient(#8add6d, #60b044);
 	border: 1px solid #5ca941;
+	border-radius: 3px;
 	padding: 6px 12px;
 	font-size: 14px;
 	font-weight: 600;
@@ -106,19 +107,55 @@ textarea {
 	}
 }
 
+.sign-up-box {
+	padding: 15px 20px;
+	margin-top: 12px;
+	text-align: center;
+	border: 1px solid #d8dee2;
+	border-radius: 5px;
+	width: 274px;
+	background-color: #f9f9f9;
+}
+
 .register-link {
 	text-align: center;
 	text-decoration: none;
 	color: #4078c0;
 }
 
+.wrong {
+	color: red;
+}
+
 .login-box {
-	background-color: #fff;
+	background-color: #f9f9f9;
 	border: 1px solid #d8dee2;
-	height: 193px;
 	width: 274px;
 	padding:20px;
+	margin-top: 40px;
 	border-radius: 3px;
+	div {
+		margin-bottom: 7px;
+	}
+	input {
+		width: 256px;
+		border-radius: 3px;
+		border: 2px solid #d8d8d8;
+		padding: 6px 8px;
+		font-size: 12px;
+		box-shadow: none;
+		margin-top: 5px;
+		margin-bottom: 15px;
+		&:focus {
+			outline: none;
+			border: 2px solid #51a7e1;
+			box-shadow: inset 0 1px 2px rgba(0,0,0,0.075),0 0 5px rgba(81,167,232,0.5);
+		}
+	}
+	button {
+		width: 100%;
+		margin-top: 20px;
+	}
 }
 
 .footer {
@@ -145,7 +182,7 @@ textarea {
 .user-info {
 	float: left;
 	padding-top: 75px;
-	margin-left: 150px;
+	margin-left: 120px;
 	img {
 		height: 230px;
 		width: 230px;
@@ -306,16 +343,18 @@ textarea {
 	float: left;
 	padding: 10px;
 	border: 1px solid #d8d8d8;
-	width: 75%;
+	width: 80%;
 	margin-right: 10%;
 	margin-top: 10px;
 	margin-bottom: 10px;
+	box-shadow: 0 0 3px rgba(0,0,0,0.4)
 }
 
 .title {
 	font-weight: bold;
 	font-size: 14px;
 	color: #4078c0;
+	text-decoration: none;
 	&:hover {
 		text-decoration: underline;
 	}
@@ -389,20 +428,39 @@ textarea {
 	}
 }
 
+.oc-login {
+	font-size: 12px;
+}
+
 .single-comment {
 	padding: 10px;
+	padding-right: 0;
 	margin: 15px;
+	margin-right: 0;
+	margin-left: 0;
 	border-left: 1px solid black;
-	padding-bottom: 0;
-	padding-top: 0;
+	min-height: 35px;
+	box-shadow: 0 0 3px rgba(0,0,0,0.4)
 }
 
 .single-reply {
 	padding: 10px;
+	padding-right: 0;
 	margin: 15px;
+	margin-right: 0;
 	border-left: 1px solid black;
-	padding-bottom: 0;
-	padding-top: 0;
+	min-height: 35px;
+	box-shadow: 0 0 3px rgba(0,0,0,0.4)
+}
+
+.single-subreply {
+	padding: 10px;
+	padding-right: 0;
+	margin: 15px;
+	margin-right: 0;
+	min-height: 35px;
+	border-left: 1px solid black;
+	box-shadow: 0 0 3px rgba(0,0,0,0.4)
 }
 
 .view-more {
@@ -414,6 +472,7 @@ textarea {
 }
 
 .edit {
+	font-size: 12px;
 	color: #4078c0;
 	cursor: pointer;
 	&:hover {
@@ -439,6 +498,9 @@ textarea {
 
 .upvote-count {
 	padding-top: 10px;
+	span {
+		display: block;
+	}
 }
 
 //single repo page
@@ -446,6 +508,12 @@ textarea {
 .single-repo {
 	margin-left: 25px;
 	margin-right: 25px;
+}
+
+.repository {
+	min-height: 152px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 .reply {
@@ -474,6 +542,12 @@ textarea {
 	margin-right: auto;
 }
 
+.comment-break {
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 2px solid #d8d8d8;
+}
+
 .comment-block {
 	margin: 10px;
 }
@@ -500,4 +574,253 @@ textarea {
 		color: #4078c0;
 		cursor: pointer;
 	}
+}
+
+//welcome
+
+.welcome {
+	a {
+		text-decoration: none;
+	}
+}
+
+.w-logo {
+	a {
+		color: #fff;
+		text-decoration: none;
+	};
+	.s1 {
+		font-size: 30px;
+		font-weight: bold;
+	};
+	.s2 {
+		font-size: 30px;
+	}
+}
+
+.w-header {
+	width: 100%;
+	background-color: #00A0F0;
+	text-align: center;
+	padding-top: 20px;
+}
+
+.w-headline {
+	margin-top: 30px;
+	height: 100%;
+	padding-top: 10%;
+	padding-bottom: 10%;
+	background-color: rgba(0,0,0,0.5);
+}
+
+.wh-main {
+	text-align: center;
+	font-size: 50px;
+	color: #fff;
+	display: block;
+	text-decoration: none;
+}
+
+.wh-sub {
+	color: #efefef;
+	font-size: 20px;
+	text-align: center;
+	display: block;
+}
+
+.w-content {
+	background-color: #f5f5f5;
+	width: 100%;
+}
+
+.wc-box {
+	height: 200px;
+	width: 30.33%;
+	border: 2px #efefef;
+	border-radius: 3px;
+	background-color: #fff;
+	display: inline-block;
+	margin: 20px;
+	vertical-align: top;
+}
+
+.wc-title {
+	text-align: center;
+	padding: 10px;
+	display: block;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.wc-para {
+	padding: 10px;
+	display: block;
+	span {
+		color: #00A0F0;
+	}
+}
+
+.hero1 {
+	background-image: url("../../images/hero-1.jpg");
+	height: 50%;
+	width: 100%;
+	margin-top: 30px;
+	background-position: center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.s3 {
+	color: #00A0F0;
+	font-size: 20px;
+	font-weight: bold;
+	display: block;
+}
+
+.w-section {
+	height: 100px;
+	line-height: 100px;
+	width: 100%;
+	background-color: #00A0F0;
+}
+
+@media screen and (max-width: 415px) {
+	.logo {
+		margin: 0;
+		margin-left: 5%;
+	}
+
+	.links {
+		float: right;
+		padding: 0;
+		padding-right: 15px;
+		span {
+			display: block;
+			font-size: 12px;
+		}
+	}
+
+	.nav {
+		position: relative;
+	}
+
+	.github-search {
+		// position: absolute;
+		// left: 10px;
+		input {
+			width: 165px;
+		}
+	}
+
+	.upvote-buttons {
+		margin-left: 10px;
+	}
+
+	.upvote-count {
+		display: block;
+		text-align: center;
+		span {
+			display: block;
+			font-size: 11px;
+		}
+	}
+
+	.home-page-repo {
+		height: 130px;
+		float: right;
+		margin: 0;
+		font-size: 10px;
+		.user-desc {
+			display: none;
+		}
+	}
+
+	.user-info {
+		width: 230px;
+		padding-top: 0;
+		margin-left: auto;
+		margin-right: auto;
+		float: none;
+	}
+
+	.user-repos {
+		margin: 0;
+		padding: 0;
+		margin-top: 10px;
+		border: 0;
+		width: 320px;
+		height: 300px;
+	}
+
+	.profile-repo {
+		margin: 0;
+		width: 90%;
+	}
+
+	.user-repo-search {
+		margin: 0;
+		input {
+			max-width: 300px;
+		}
+		button {
+			max-width: 310px;
+		}
+	}
+
+	.single-result-popup {
+		width: 80%;
+		position: fixed;
+		left: 5%;
+		right: 5%;
+	}
+
+	.single-repo {
+		margin: 0;
+	}
+
+	.single-reply {
+		margin-left: 10px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+
+	.single-subreply {
+		margin-left: 10px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+
+	.allsearches {
+		margin: 0;
+	}
+
+	.hero1 {
+		height: 200px;
+	}
+
+	.w-headline {
+		height: 80%;
+	}
+
+	.wh-main {
+		font-size: 30px;
+		padding: 0 10px;
+	}
+
+	.wh-sub {
+		font-size: 20px;
+		padding: 0 10px;
+	}
+
+	.w-content {
+		overflow: auto;
+	}
+
+	.wc-box {
+		display: block;
+		margin: 15px auto;
+		width: 90%;
+	}
+
 }
