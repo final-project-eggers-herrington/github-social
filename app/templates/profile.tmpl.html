@@ -38,8 +38,8 @@
 	</div>
 	<div ng-show="vm.results" class="results">
 		<div class="single-user-repo" ng-repeat="filteredRepo in vm.filteredUserRepos">
-			<div class="search-repo" ng-click="vm.popupOpen(filteredRepo)">
-			<a href="{{filteredRepo.html_url}}"></a><span>{{ filteredRepo.name }}</span>
+			<div class="profile-repo" ng-click="vm.popupOpen(filteredRepo)">
+			<a href="{{filteredRepo.html_url}}"><span>{{ filteredRepo.name }}</span></a>
 			<span class="timestamp">{{ filteredRepo.created_at }}</span>
 			<div>
 				<span class="language">{{ filteredRepo.language }}</span>
